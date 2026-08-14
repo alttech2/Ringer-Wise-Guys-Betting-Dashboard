@@ -78,6 +78,11 @@
   .zeroline{stroke:var(--faint);stroke-dasharray:3 3;stroke-width:1;opacity:.6}
   .heroline{fill:none;stroke:var(--brand);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
   .dot{fill:var(--brand)}
+  .chartbox{position:relative}
+  .cx-line{stroke:var(--faint);stroke-width:1;stroke-dasharray:2 2}
+  .cx-dot{stroke:var(--paper);stroke-width:2}
+  .chart-tip{position:absolute;display:none;transform:translate(-50%,-140%);background:var(--ink);color:var(--paper);font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:6;font-variant-numeric:tabular-nums;box-shadow:0 6px 16px -6px rgba(0,0,0,.45)}
+  .chart-tip b{font-weight:800}
 
   .hosts{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
   .hrow{display:grid;grid-template-columns:22px 200px 1fr 132px;align-items:center;gap:14px;
@@ -188,7 +193,7 @@
         <button class="son">M</button>
         <button class="soff" title="Unlocks with 2026 backfill">Y</button>
       </div></div>
-      <svg id="heroChart" viewBox="0 0 640 260" preserveAspectRatio="none"></svg>
+      <div class="chartbox" id="heroChart"></div>
     </div>
   </section>
 
@@ -275,40 +280,76 @@ function pagedTable(el, list, withHost){
   }
   render();
 }
-function sparkline(vals){
-  const W=520,H=64,pl=6,pr=6,pt=8,pb=8, pts=[0,...vals];
-  const lo=Math.min(...pts,0),hi=Math.max(...pts,0),span=(hi-lo)||1;
-  const xs=pts.map((_,i)=>pl+(W-pl-pr)*i/(pts.length-1)); const y=v=>pt+(H-pt-pb)*(1-(v-lo)/span);
-  let d="M"+xs[0]+" "+y(pts[0]); for(let i=1;i<pts.length;i++)d+=" L"+xs[i]+" "+y(pts[i]);
-  const end=pts[pts.length-1], col=end>=0?"var(--pos)":"var(--neg)";
-  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
-    <line class="zeroline" x1="${pl}" x2="${W-pr}" y1="${y(0)}" y2="${y(0)}"/>
-    <path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle cx="${xs[xs.length-1]}" cy="${y(end)}" r="3.5" fill="${col}"/></svg>`;
+function makeChart(el, series, opts){
+  opts = opts || {};
+  const W=640, H=opts.h||200, padL=opts.padL||40, padR=14, padT=opts.padT||24, padB=26;
+  const n=series.length, col=opts.color||"var(--brand)";
+  const vals=series.map(p=>p.v);
+  let dlo=Math.min(...vals,0), dhi=Math.max(...vals,0);
+  let lo=dlo, hi=dhi; if(lo===hi){ lo-=1; hi+=1; }
+  const room=(hi-lo)*0.12; lo-=room; hi+=room;
+  const x=i=> padL+(W-padL-padR)*(n>1?i/(n-1):0);
+  const y=v=> padT+(H-padT-padB)*(1-(v-lo)/(hi-lo));
+  const pts=series.map((p,i)=>({vbx:x(i), vby:y(p.v), v:p.v, date:p.date}));
+  let d="M"+pts[0].vbx+" "+pts[0].vby; for(let i=1;i<n;i++) d+=" L"+pts[i].vbx+" "+pts[i].vby;
+  const area=d+" L"+pts[n-1].vbx+" "+y(lo)+" L"+pts[0].vbx+" "+y(lo)+" Z";
+  // x-axis labels: one per distinct date, thinned to ~maxLabels evenly-spaced (weekly over a month, quarterly over a year)
+  const maxLabels = opts.maxLabels || 4;
+  const labelIdx = []; const seen = new Set();
+  series.forEach((p,i)=>{ if(p.date && !seen.has(p.date)){ seen.add(p.date); labelIdx.push({i, date:p.date}); }});
+  let show;
+  if(labelIdx.length <= maxLabels){ show = labelIdx; }
+  else { const pick = new Set();
+    for(let k=0;k<maxLabels;k++) pick.add(Math.round(k*(labelIdx.length-1)/(maxLabels-1)));
+    show = [...pick].map(j=>labelIdx[j]); }
+  const xt = show.map(o=>`<text class="axlab" x="${x(o.i)}" y="${H-8}" text-anchor="middle">${o.date}</text>`).join("");
+  let yt="";
+  [...new Set([dhi,0,dlo])].forEach(v=>{ yt+=`<text class="axlab" x="6" y="${y(v)+4}">${v>0?'+':''}${v.toFixed(1)}u</text>`; });
+  const gid="g"+Math.random().toString(36).slice(2,7);
+  el.classList.add("chartbox");
+  el.innerHTML=`<div class="chart-tip"></div>
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+      <defs><linearGradient id="${gid}" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0" stop-color="${col}" stop-opacity=".16"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
+      <line class="zeroline" x1="${padL}" x2="${W-padR}" y1="${y(0)}" y2="${y(0)}"/>
+      ${yt}${xt}
+      <path d="${area}" fill="url(#${gid})"/>
+      <path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <line class="cx-line" y1="${padT}" y2="${H-padB}" style="display:none"/>
+      <circle cx="${pts[n-1].vbx}" cy="${pts[n-1].vby}" r="4" fill="${col}"/>
+      <circle class="cx-dot" r="4.5" fill="${col}" style="display:none"/>
+    </svg>`;
+  const svg=el.querySelector("svg"), gl=el.querySelector(".cx-line"),
+        gd=el.querySelector(".cx-dot"), tip=el.querySelector(".chart-tip");
+  function at(clientX){
+    const rect=svg.getBoundingClientRect(); if(!rect.width) return;
+    let f=(clientX-rect.left)/rect.width; f=Math.max(0,Math.min(1,f));
+    const i=Math.round(f*(n-1)), pt=pts[i];
+    gl.setAttribute("x1",pt.vbx); gl.setAttribute("x2",pt.vbx); gl.style.display="";
+    gd.setAttribute("cx",pt.vbx); gd.setAttribute("cy",pt.vby); gd.style.display="";
+    tip.innerHTML=(pt.date||"Start")+' &middot; <b>'+(pt.v>=0?"+":"")+pt.v.toFixed(2)+"u</b>";
+    tip.style.display="block";
+    tip.style.transform = (pt.vby/H < 0.28) ? "translate(-50%,40%)" : "translate(-50%,-140%)";
+    tip.style.left=(pt.vbx/W*rect.width)+"px";
+    tip.style.top=(pt.vby/H*rect.height)+"px";
+  }
+  function off(){ gl.style.display="none"; gd.style.display="none"; tip.style.display="none"; }
+  svg.addEventListener("mousemove", e=>at(e.clientX));
+  svg.addEventListener("mouseleave", off);
+  svg.addEventListener("touchstart", e=>at(e.touches[0].clientX), {passive:true});
+  svg.addEventListener("touchmove",  e=>at(e.touches[0].clientX), {passive:true});
+  svg.addEventListener("touchend", off);
 }
-const runningNet = list => list.map((b,i,a)=>a.slice(0,i+1).reduce((s,x)=>s+x.net,0));
+function hostSeries(list){ let r=0; const s=[{date:"",v:0}];
+  list.forEach(b=>{ r+=b.net; s.push({date:b.date, v:+r.toFixed(2)}); }); return s; }
 
 /* ---------- hero ---------- */
 let cum=[];
-function buildCum(){ cum=[{d:"",v:0}]; let r=0;
-  bets.forEach(b=>{ r+=b.net; cum.push({d:b.date, v:+r.toFixed(2)}); });
-  const seen=new Set(); cum.forEach(p=>{ if(p.d){ if(seen.has(p.d)) p.d=""; else seen.add(p.d); } });
+function buildCum(){ cum=[{date:"",v:0}]; let r=0;
+  bets.forEach(b=>{ r+=b.net; cum.push({date:b.date, v:+r.toFixed(2)}); });
 }
 function drawHero(){
-  const W=640,H=260,padL=40,padR=14,padT=30,padB=26;
-  const xs=cum.map((_,i)=>padL+(W-padL-padR)*i/(cum.length-1));
-  const vals=cum.map(p=>p.v), lo=Math.min(...vals,-1), hi=Math.max(...vals,1);
-  const y=v=>padT+(H-padT-padB)*(1-(v-lo)/(hi-lo)); const ys=vals.map(y);
-  let d="M"+xs[0]+" "+ys[0]; for(let i=1;i<xs.length;i++)d+=" L"+xs[i]+" "+ys[i];
-  const area=d+" L"+xs[xs.length-1]+" "+y(lo)+" L"+xs[0]+" "+y(lo)+" Z";
-  let ticks=""; cum.forEach((p,i)=>{if(p.d)ticks+=`<text class="axlab" x="${xs[i]}" y="${H-8}" text-anchor="middle">${p.d}</text>`;});
-  const yt=[hi,0,lo].map(v=>`<text class="axlab" x="6" y="${y(v)+4}">${v>0?'+':''}${v.toFixed(1)}u</text>`).join("");
-  document.getElementById("heroChart").innerHTML=`
-    <defs><linearGradient id="hg" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="var(--brand)" stop-opacity=".16"/><stop offset="1" stop-color="var(--brand)" stop-opacity="0"/></linearGradient></defs>
-    <line class="zeroline" x1="${padL}" x2="${W-padR}" y1="${y(0)}" y2="${y(0)}"/>
-    ${yt}${ticks}<path d="${area}" fill="url(#hg)"/><path class="heroline" d="${d}"/>
-    <circle class="dot" cx="${xs[xs.length-1]}" cy="${ys[ys.length-1]}" r="4"/>`;
+  makeChart(document.getElementById("heroChart"), cum, {h:260, padL:40, padT:30, color:"var(--brand)"});
 }
 
 /* ---------- hosts ---------- */
@@ -332,12 +373,13 @@ function drawHosts(){
       <div class="panel" data-p="${i}">
         <div class="panelhd"><span class="t">${h.name} · ${h.str} · <span class="${h.net>=0?'pos':'neg'}">${f2(h.net)}u</span></span>
           <div class="seg"><button class="soff">W</button><button class="son">M</button><button class="soff">Y</button></div></div>
-        <div class="sparkwrap"><div class="subhd">Cumulative units</div>${sparkline(runningNet(h.list))}</div>
+        <div class="sparkwrap"><div class="subhd">Cumulative units</div><div class="chartbox spark" id="spark-${i}"></div></div>
         <div class="subhd">MLB · ${h.list.length} bets</div>
         <div class="pt" id="pt-h-${i}"></div>
       </div>`;
   }).join("");
   rows.forEach((h,i)=>pagedTable(document.getElementById("pt-h-"+i), h.list, false));
+  rows.forEach((h,i)=>makeChart(document.getElementById("spark-"+i), hostSeries(h.list), {h:150, padL:34, padT:16, color:(h.net>=0?"var(--pos)":"var(--neg)")}));
   document.querySelectorAll(".hrow").forEach(row=>row.addEventListener("click",()=>{
     const i=row.dataset.i;
     row.classList.toggle("open");
