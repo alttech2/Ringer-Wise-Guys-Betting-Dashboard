@@ -1,8 +1,8 @@
 {
   "meta": {
     "generated": "2026-08-14",
-    "range": "8/3\u20138/10",
-    "count": 16,
+    "range": "8/3\u20138/13",
+    "count": 19,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -165,6 +165,36 @@
       "odds": "-146",
       "result": "W",
       "net": 0.68
+    },
+    {
+      "date": "8/13",
+      "host": "Anthony Dabbundo",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "Bryce Harper to hit a HR",
+      "odds": "+450",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/13",
+      "host": "Cousin Sal",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Rangers/Angels Under 8",
+      "odds": "+100",
+      "result": "W",
+      "net": 1.0
+    },
+    {
+      "date": "8/13",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Cubs ML",
+      "odds": "-146",
+      "result": "L",
+      "net": -1.0
     }
   ]
 }
