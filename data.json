@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "generated": "2026-08-14",
+    "range": "8/3\u20138/10",
+    "count": 16,
+    "source": "wiseguys_tracker.xlsx"
+  },
+  "bets": [
+    {
+      "date": "8/3",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Blue Jays ML",
+      "odds": "+114",
+      "result": "W",
+      "net": 1.14
+    },
+    {
+      "date": "8/3",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Nationals/Phillies Over 9",
+      "odds": "-118",
+      "result": "P",
+      "net": 0.0
+    },
+    {
+      "date": "8/3",
+      "host": "Tate Frazier",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "Schwarber to hit a HR",
+      "odds": "+235",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/5",
+      "host": "Joe House",
+      "type": "Spread",
+      "sport": "MLB",
+      "bet": "Phillies -1.5 (run line)",
+      "odds": "+110",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/5",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Cardinals ML",
+      "odds": "+142",
+      "result": "W",
+      "net": 1.42
+    },
+    {
+      "date": "8/5",
+      "host": "Tate Frazier",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "Kyle Tucker 2+ hits",
+      "odds": "+310",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/7",
+      "host": "Cousin Sal",
+      "type": "Parlay",
+      "sport": "MLB",
+      "bet": "Red Sox ML + Cardinals ML",
+      "odds": "+130",
+      "result": "W",
+      "net": 1.3
+    },
+    {
+      "date": "8/7",
+      "host": "Joe House",
+      "type": "Spread",
+      "sport": "MLB",
+      "bet": "Red Sox -1.5 (run line)",
+      "odds": "-118",
+      "result": "W",
+      "net": 0.85
+    },
+    {
+      "date": "8/7",
+      "host": "Joe House",
+      "type": "Parlay",
+      "sport": "MLB",
+      "bet": "Cardinals ML + Guardians ML",
+      "odds": "+181",
+      "result": "W",
+      "net": 1.81
+    },
+    {
+      "date": "8/7",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rangers ML",
+      "odds": "-142",
+      "result": "W",
+      "net": 0.7
+    },
+    {
+      "date": "8/7",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Phillies/Blue Jays Under 8",
+      "odds": "-115",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/10",
+      "host": "Joe House",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rays ML",
+      "odds": "-145",
+      "result": "W",
+      "net": 0.69
+    },
+    {
+      "date": "8/10",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Red Sox ML",
+      "odds": "-146",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/10",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Cardinals ML",
+      "odds": "+106",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/10",
+      "host": "Cousin Sal",
+      "type": "Parlay",
+      "sport": "MLB",
+      "bet": "Braves ML + Dodgers ML",
+      "odds": "+137",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/10",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Astros ML",
+      "odds": "-146",
+      "result": "W",
+      "net": 0.68
+    }
+  ]
+}
