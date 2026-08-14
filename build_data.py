@@ -36,9 +36,13 @@ def main():
         if not row or not row[idx["Date"]]:
             continue
         res = (row[idx["Result"]] or "").strip().upper()
-        if res not in ("W", "L", "P"):
-            continue  # skip ungraded
         odds = str(row[idx["Odds"]]).strip()
+        if res in ("W", "L", "P"):
+            result, net = res, net_units(odds, res)
+        elif res == "PENDING":
+            result, net = "Pending", None   # published but not settled
+        else:
+            continue  # blank / ungraded
         bets.append({
             "date":   str(row[idx["Date"]]).strip(),
             "host":   str(row[idx["Host"]]).strip(),
@@ -46,8 +50,8 @@ def main():
             "sport":  str(row[idx["League"]]).strip(),
             "bet":    str(row[idx["Bet"]]).strip(),
             "odds":   odds,
-            "result": res,
-            "net":    net_units(odds, res),
+            "result": result,
+            "net":    net,
         })
         dates.append(str(row[idx["Date"]]).strip())
 
@@ -61,7 +65,7 @@ def main():
         "bets": bets,
     }
     OUT.write_text(json.dumps(data, indent=2))
-    print(f"Wrote {OUT.name}: {len(bets)} graded best bets ({data['meta']['range']})")
+    print(f"Wrote {OUT.name}: {len(bets)} best bets published ({data['meta']['range']})")
 
 if __name__ == "__main__":
     main()
