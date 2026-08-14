@@ -14,7 +14,7 @@
     --brand:#e4032b;
     --pos:#12915a; --posbg:#e8f4ee;
     --neg:#d8382c; --negbg:#fbeae8;
-    --push:#8a8a90; --pushbg:#f0f0f2;
+    --push:#8a8a90; --pushbg:#f0f0f2; --pend:#3b6fb0; --pendbg:#e9f0fa;
     --sub:#fafafb;
     --shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px -18px rgba(0,0,0,.25);
   }
@@ -24,7 +24,7 @@
     --brand:#ff2d47;
     --pos:#2fd08a; --posbg:#123227;
     --neg:#ff5648; --negbg:#341a1a;
-    --push:#8a8b92; --pushbg:#1e2126;
+    --push:#8a8b92; --pushbg:#1e2126; --pend:#7aa8e0; --pendbg:#18212e;
     --sub:#0f1113;
     --shadow:0 1px 0 rgba(0,0,0,.4),0 12px 30px -20px rgba(0,0,0,.8);
   }
@@ -116,7 +116,7 @@
   .bt tr:last-child td{border-bottom:none}
   .bt .r{text-align:right}
   .badge{font-weight:800;font-size:11px;padding:2px 7px;border-radius:5px}
-  .b-W{color:var(--pos);background:var(--posbg)} .b-L{color:var(--neg);background:var(--negbg)} .b-P{color:var(--push);background:var(--pushbg)}
+  .b-W{color:var(--pos);background:var(--posbg)} .b-L{color:var(--neg);background:var(--negbg)} .b-P{color:var(--push);background:var(--pushbg)} .b-Pending{color:var(--pend);background:var(--pendbg)}
 
   /* paged table controls */
   .tfoot{display:flex;justify-content:flex-end;align-items:center;margin-top:9px;min-height:26px}
@@ -212,7 +212,7 @@
     </div>
     <div class="bcard">
       <h4>By category</h4>
-      <div class="pill active"><span class="d" style="background:var(--pos)"></span>Best Bets <span class="r">16 bets</span></div>
+      <div class="pill active"><span class="d" style="background:var(--pos)"></span>Best Bets <span class="r" id="bbCount">&mdash;</span></div>
       <div class="pill soon"><span class="d" style="background:var(--faint)"></span>Futures <span class="r">Coming soon</span></div>
     </div>
   </section>
@@ -238,15 +238,16 @@ const sportOrder = ["MLB","NFL","NBA","Golf"];
 
 /* ---------- helpers ---------- */
 const f2 = n => (n>=0?"+":"") + n.toFixed(2);
-function recOf(list){let w=0,l=0,p=0;list.forEach(b=>{if(b.result==="W")w++;else if(b.result==="L")l++;else p++;});
-  return {w,l,p,str:`${w}-${l}-${p}`,wp:(w+l)?Math.round(w/(w+l)*100):0,net:list.reduce((s,b)=>s+b.net,0)};}
+function recOf(list){const settled=list.filter(b=>b.result==="W"||b.result==="L"||b.result==="P");
+  let w=0,l=0,p=0;settled.forEach(b=>{if(b.result==="W")w++;else if(b.result==="L")l++;else p++;});
+  return {w,l,p,pend:list.length-settled.length,settled:settled.length,str:`${w}-${l}-${p}`,
+    wp:(w+l)?Math.round(w/(w+l)*100):0,net:settled.reduce((s,b)=>s+b.net,0)};}
 function betRows(list, withHost){
   const head=`<tr><th>Date</th>${withHost?"<th>Host</th>":""}<th>Bet</th><th>Odds</th><th class="r">Result</th><th class="r">Units</th></tr>`;
-  const body=list.map(b=>`<tr>
-    <td class="num">${b.date}</td>${withHost?`<td>${b.host}</td>`:""}
-    <td>${b.bet}</td><td class="num">${b.odds}</td>
-    <td class="r"><span class="badge b-${b.result}">${b.result}</span></td>
-    <td class="r num ${b.net>0?'pos':b.net<0?'neg':'pushc'}" style="font-weight:800">${b.result==='P'?'0.00':f2(b.net)}</td></tr>`).join("");
+  const body=list.map(b=>{ const pend=b.result==="Pending";
+    const badge=pend?`<span class="badge b-Pending">Pending</span>`:`<span class="badge b-${b.result}">${b.result}</span>`;
+    const units=pend?`<td class="r pushc" style="font-weight:800">&mdash;</td>`:`<td class="r num ${b.net>0?'pos':b.net<0?'neg':'pushc'}" style="font-weight:800">${b.result==='P'?'0.00':f2(b.net)}</td>`;
+    return `<tr><td class="num">${b.date}</td>${withHost?`<td>${b.host}</td>`:""}<td>${b.bet}</td><td class="num">${b.odds}</td><td class="r">${badge}</td>${units}</tr>`; }).join("");
   return `<table class="bt">${head}${body}</table>`;
 }
 /* 5 rows collapsed -> Expand -> pages of 10 with next/prev arrows */
@@ -341,12 +342,12 @@ function makeChart(el, series, opts){
   svg.addEventListener("touchend", off);
 }
 function hostSeries(list){ let r=0; const s=[{date:"",v:0}];
-  list.forEach(b=>{ r+=b.net; s.push({date:b.date, v:+r.toFixed(2)}); }); return s; }
+  list.filter(b=>b.result==="W"||b.result==="L"||b.result==="P").forEach(b=>{ r+=b.net; s.push({date:b.date, v:+r.toFixed(2)}); }); return s; }
 
 /* ---------- hero ---------- */
 let cum=[];
 function buildCum(){ cum=[{date:"",v:0}]; let r=0;
-  bets.forEach(b=>{ r+=b.net; cum.push({date:b.date, v:+r.toFixed(2)}); });
+  bets.filter(b=>b.result==="W"||b.result==="L"||b.result==="P").forEach(b=>{ r+=b.net; cum.push({date:b.date, v:+r.toFixed(2)}); });
 }
 function drawHero(){
   makeChart(document.getElementById("heroChart"), cum, {h:260, padL:40, padT:30, color:"var(--brand)"});
@@ -354,7 +355,8 @@ function drawHero(){
 
 /* ---------- hosts ---------- */
 function drawHosts(){
-  const rows=hostMeta.map(h=>{const list=bets.filter(b=>b.host===h.name);return {...h,list,...recOf(list)};});
+  let rows=hostMeta.map(h=>{const list=bets.filter(b=>b.host===h.name);return {...h,list,...recOf(list)};});
+  rows=rows.filter(r=>r.list.length>0);
   rows.sort((a,b)=>b.net-a.net);
   const maxAbs=Math.max(...rows.map(r=>Math.abs(r.net)));
   document.getElementById("hosts").innerHTML=rows.map((h,i)=>{
@@ -366,9 +368,9 @@ function drawHosts(){
         <span class="chev">▶</span>
         <div class="who"><span class="rank num">${i+1}</span>
           <span class="av" style="background:${h.tint}">${h.init}</span>
-          <span class="nm">${h.name}<small>${h.str} · ${h.wp}% win</small></span></div>
+          <span class="nm">${h.name}<small>${h.str} · ${h.wp}% win${h.pend?` · ${h.pend} pending`:""}</small></span></div>
         <div class="track"><div class="mid"></div>${bar}</div>
-        <div class="stat"><b class="num">${h.str}</b> record<br><b class="num">${h.wp}%</b> win rate</div>
+        <div class="stat"><b class="num">${h.str}</b> record<br><b class="num">${h.wp}%</b> win rate${h.pend?`<br><b class="num" style="color:var(--pend)">${h.pend}</b> pending`:""}</div>
       </div>
       <div class="panel" data-p="${i}">
         <div class="panelhd"><span class="t">${h.name} · ${h.str} · <span class="${h.net>=0?'pos':'neg'}">${f2(h.net)}u</span></span>
@@ -412,8 +414,8 @@ function drawSports(){
     const list=bets.filter(b=>b.sport===s), r=recOf(list);
     if(list.length){
       return `<div class="pill active sportrow" data-s="${i}"><span class="chev">▶</span>
-          <span class="d" style="background:var(--pos)"></span>${s}
-          <span class="r">${r.str} · ${f2(r.net)}u</span></div>
+          <span class="d" style="background:${r.net>0?'var(--pos)':r.net<0?'var(--neg)':'var(--faint)'}"></span>${s}
+          <span class="r">${r.str} · ${f2(r.net)}u${r.pend?` · ${r.pend} pending`:""}</span></div>
         <div class="tlist" data-sl="${i}"><div class="pt" id="pt-s-${i}"></div></div>`;
     }
     return `<div class="pill soon"><span class="d" style="background:var(--faint)"></span>${s} <span class="r">Awaiting data</span></div>`;
@@ -442,7 +444,8 @@ function drawOverall(){
   net.classList.add(r.net >= 0 ? "pos" : "neg");
   const wp = (r.w + r.l) ? (r.w/(r.w+r.l)*100).toFixed(1) : "0.0";
   document.getElementById("ovWin").innerHTML = wp + '<span style="font-size:16px">%</span>';
-  document.getElementById("ovBets").textContent = bets.length;
+  document.getElementById("ovBets").textContent = r.settled;
+  const bbc=document.getElementById("bbCount"); if(bbc) bbc.textContent = r.pend ? `${r.settled} · ${r.pend} pending` : `${r.settled} bets`;
 }
 function init(){ buildCum(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
 fetch('data.json', {cache:'no-store'})
