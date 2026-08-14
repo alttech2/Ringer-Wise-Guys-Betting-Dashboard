@@ -174,11 +174,11 @@
   <section class="hero">
     <div class="left">
       <div class="reclab">Wise Guys best-bets record</div>
-      <div class="rec num">8&#8202;-&#8202;7&#8202;-&#8202;1</div>
+      <div class="rec num" id="ovRecord">&mdash;</div>
       <div class="kpis">
-        <div class="kpi"><div class="v pos num">+1.59</div><div class="l">Net units</div></div>
-        <div class="kpi"><div class="v num">53.3<span style="font-size:16px">%</span></div><div class="l">Win rate</div></div>
-        <div class="kpi"><div class="v num">16</div><div class="l">Bets</div></div>
+        <div class="kpi"><div class="v num" id="ovNet">&mdash;</div><div class="l">Net units</div></div>
+        <div class="kpi"><div class="v num" id="ovWin">&mdash;</div><div class="l">Win rate</div></div>
+        <div class="kpi"><div class="v num" id="ovBets">&mdash;</div><div class="l">Bets</div></div>
       </div>
     </div>
     <div class="right">
@@ -233,15 +233,15 @@ const sportOrder = ["MLB","NFL","NBA","Golf"];
 
 /* ---------- helpers ---------- */
 const f2 = n => (n>=0?"+":"") + n.toFixed(2);
-function recOf(list){let w=0,l=0,p=0;list.forEach(b=>{if(b.res==="W")w++;else if(b.res==="L")l++;else p++;});
+function recOf(list){let w=0,l=0,p=0;list.forEach(b=>{if(b.result==="W")w++;else if(b.result==="L")l++;else p++;});
   return {w,l,p,str:`${w}-${l}-${p}`,wp:(w+l)?Math.round(w/(w+l)*100):0,net:list.reduce((s,b)=>s+b.net,0)};}
 function betRows(list, withHost){
   const head=`<tr><th>Date</th>${withHost?"<th>Host</th>":""}<th>Bet</th><th>Odds</th><th class="r">Result</th><th class="r">Units</th></tr>`;
   const body=list.map(b=>`<tr>
     <td class="num">${b.date}</td>${withHost?`<td>${b.host}</td>`:""}
     <td>${b.bet}</td><td class="num">${b.odds}</td>
-    <td class="r"><span class="badge b-${b.res}">${b.res}</span></td>
-    <td class="r num ${b.net>0?'pos':b.net<0?'neg':'pushc'}" style="font-weight:800">${b.res==='P'?'0.00':f2(b.net)}</td></tr>`).join("");
+    <td class="r"><span class="badge b-${b.result}">${b.result}</span></td>
+    <td class="r num ${b.net>0?'pos':b.net<0?'neg':'pushc'}" style="font-weight:800">${b.result==='P'?'0.00':f2(b.net)}</td></tr>`).join("");
   return `<table class="bt">${head}${body}</table>`;
 }
 /* 5 rows collapsed -> Expand -> pages of 10 with next/prev arrows */
@@ -391,7 +391,18 @@ document.getElementById("themeBtn").addEventListener("click",()=>{
   document.getElementById("themeBtn").textContent = dark ? "◑ Light" : "◐ Dark"; drawHero();
 });
 
-function init(){ buildCum(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
+function drawOverall(){
+  const r = recOf(bets);
+  const rec = document.getElementById("ovRecord");
+  rec.innerHTML = `${r.w}&#8202;-&#8202;${r.l}&#8202;-&#8202;${r.p}`;
+  const net = document.getElementById("ovNet");
+  net.textContent = f2(r.net) + "u"; net.classList.remove("pos","neg");
+  net.classList.add(r.net >= 0 ? "pos" : "neg");
+  const wp = (r.w + r.l) ? (r.w/(r.w+r.l)*100).toFixed(1) : "0.0";
+  document.getElementById("ovWin").innerHTML = wp + '<span style="font-size:16px">%</span>';
+  document.getElementById("ovBets").textContent = bets.length;
+}
+function init(){ buildCum(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
 fetch('data.json', {cache:'no-store'})
   .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(data=>{
