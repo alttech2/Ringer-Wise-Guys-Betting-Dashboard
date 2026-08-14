@@ -1,71 +1,11 @@
 {
   "meta": {
     "generated": "2026-08-14",
-    "range": "8/3\u20138/13",
-    "count": 19,
+    "range": "8/7\u20138/14",
+    "count": 18,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
-    {
-      "date": "8/3",
-      "host": "Raheem Palmer",
-      "type": "Moneyline",
-      "sport": "MLB",
-      "bet": "Blue Jays ML",
-      "odds": "+114",
-      "result": "W",
-      "net": 1.14
-    },
-    {
-      "date": "8/3",
-      "host": "Anthony Dabbundo",
-      "type": "Total",
-      "sport": "MLB",
-      "bet": "Nationals/Phillies Over 9",
-      "odds": "-118",
-      "result": "P",
-      "net": 0.0
-    },
-    {
-      "date": "8/3",
-      "host": "Tate Frazier",
-      "type": "Prop",
-      "sport": "MLB",
-      "bet": "Schwarber to hit a HR",
-      "odds": "+235",
-      "result": "L",
-      "net": -1.0
-    },
-    {
-      "date": "8/5",
-      "host": "Joe House",
-      "type": "Spread",
-      "sport": "MLB",
-      "bet": "Phillies -1.5 (run line)",
-      "odds": "+110",
-      "result": "L",
-      "net": -1.0
-    },
-    {
-      "date": "8/5",
-      "host": "Anthony Dabbundo",
-      "type": "Moneyline",
-      "sport": "MLB",
-      "bet": "Cardinals ML",
-      "odds": "+142",
-      "result": "W",
-      "net": 1.42
-    },
-    {
-      "date": "8/5",
-      "host": "Tate Frazier",
-      "type": "Prop",
-      "sport": "MLB",
-      "bet": "Kyle Tucker 2+ hits",
-      "odds": "+310",
-      "result": "L",
-      "net": -1.0
-    },
     {
       "date": "8/7",
       "host": "Cousin Sal",
@@ -195,6 +135,56 @@
       "odds": "-146",
       "result": "L",
       "net": -1.0
+    },
+    {
+      "date": "8/14",
+      "host": "Raheem Palmer",
+      "type": "Spread",
+      "sport": "NFL",
+      "bet": "Falcons +3.5",
+      "odds": "-105",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/14",
+      "host": "Raheem Palmer",
+      "type": "Spread",
+      "sport": "NFL",
+      "bet": "Eagles -3.5",
+      "odds": "-110",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/14",
+      "host": "Joe House",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Astros ML",
+      "odds": "-120",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/14",
+      "host": "Cousin Sal",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Brewers ML",
+      "odds": "+152",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/14",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Pirates ML",
+      "odds": "+115",
+      "result": "Pending",
+      "net": null
     }
   ]
 }
