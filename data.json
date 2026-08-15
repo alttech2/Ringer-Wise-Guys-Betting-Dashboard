@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-14",
+    "generated": "2026-08-15",
     "range": "8/7\u20138/14",
     "count": 18,
     "source": "wiseguys_tracker.xlsx"
@@ -143,8 +143,8 @@
       "sport": "NFL",
       "bet": "Falcons +3.5",
       "odds": "-105",
-      "result": "Pending",
-      "net": null
+      "result": "L",
+      "net": -1.0
     },
     {
       "date": "8/14",
@@ -163,8 +163,8 @@
       "sport": "MLB",
       "bet": "Astros ML",
       "odds": "-120",
-      "result": "Pending",
-      "net": null
+      "result": "W",
+      "net": 0.83
     },
     {
       "date": "8/14",
@@ -173,8 +173,8 @@
       "sport": "MLB",
       "bet": "Brewers ML",
       "odds": "+152",
-      "result": "Pending",
-      "net": null
+      "result": "L",
+      "net": -1.0
     },
     {
       "date": "8/14",
@@ -183,8 +183,8 @@
       "sport": "MLB",
       "bet": "Pirates ML",
       "odds": "+115",
-      "result": "Pending",
-      "net": null
+      "result": "W",
+      "net": 1.15
     }
   ]
 }
