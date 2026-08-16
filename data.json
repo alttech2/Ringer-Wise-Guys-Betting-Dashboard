@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-15",
+    "generated": "2026-08-16",
     "range": "8/7\u20138/14",
     "count": 18,
     "source": "wiseguys_tracker.xlsx"
@@ -153,8 +153,8 @@
       "sport": "NFL",
       "bet": "Eagles -3.5",
       "odds": "-110",
-      "result": "Pending",
-      "net": null
+      "result": "L",
+      "net": -1.0
     },
     {
       "date": "8/14",
