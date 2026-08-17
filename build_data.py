@@ -135,7 +135,7 @@ def main():
     futures = build_futures(wb)
     data = {
         "meta": {
-            "generated": datetime.datetime.now().isoformat(timespec="minutes"),
+            "generated": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="minutes"),
             "range": f"{dates[0]}\u2013{dates[-1]}" if dates else "",
             "count": len(bets), "source": "wiseguys_tracker.xlsx",
         },
