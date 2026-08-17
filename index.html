@@ -544,7 +544,7 @@ const fxBoardCap = 6;
 const fxState = {sport:"Football", tab:"wt", div:"all", exp:{}, boardExp:{}, built:false};
 
 function fmtWhen(iso){ if(!iso) return "\u2014"; const d=new Date(iso); if(isNaN(d)) return iso;
-  return d.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}); }
+  return d.toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})+' ET'; }
 function fxTint(h){ return (fxHost[h]||{t:"#5b5b60"}).t; }
 function fxAv(h){ const x=fxHost[h]||{i:(h||"?").slice(0,2).toUpperCase(),t:"#5b5b60"}; return '<span class="fxav" style="background:'+x.t+'">'+x.i+'</span>'; }
 function fxEmpty(){ return '<div class="fxcap">Nothing logged here yet.</div>'; }
