@@ -158,6 +158,68 @@
     .hero{grid-template-columns:1fr}.hero .left{border-right:none;border-bottom:1px solid var(--line)}
     .grid3{grid-template-columns:1fr}.hrow{grid-template-columns:18px 140px 1fr;gap:10px}.stat{display:none}.nav{display:none}
   }
+
+  /* ---------- Futures tab ---------- */
+  #view-futures .fx-sports{display:flex;gap:8px;margin:20px 0 4px;flex-wrap:wrap}
+  #view-futures .fxsport{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+  #view-futures .fxsport.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  #view-futures .fxsport.dis{opacity:.45;cursor:not-allowed}
+  #view-futures .fx-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+  #view-futures .fxtile{background:var(--sub);border:1px solid var(--line);border-radius:12px;padding:12px 14px;position:relative}
+  #view-futures .fxtile .k{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;font-weight:700}
+  #view-futures .fxtile .v{font-family:Anton;font-size:28px;line-height:1}
+  #view-futures .fxtile .i{position:absolute;top:9px;right:10px;color:var(--faint);cursor:pointer;font-size:10px;font-weight:800;border:1px solid var(--line);border-radius:50%;width:15px;height:15px;display:grid;place-items:center}
+  #view-futures .fxcap{font-size:12px;color:var(--muted);background:var(--sub);border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin-bottom:14px}
+  #view-futures .fx-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+  #view-futures .fxtab{font-size:12px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+  #view-futures .fxtab.on{border:1.5px solid var(--brand);color:var(--brand)}
+  #view-futures .fx-bubbles{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+  #view-futures .fxbub{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--sub);color:var(--muted);cursor:pointer}
+  #view-futures .fxbub .bd{width:7px;height:7px;border-radius:50%;background:var(--brand)}
+  #view-futures .fxbub.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  #view-futures .fxbub.on .bd{background:var(--paper)}
+  #view-futures .fxdboard{margin-bottom:14px}
+  #view-futures .fxdtitle{font-family:Anton;font-size:14px;text-transform:uppercase;letter-spacing:.02em;color:var(--muted);margin-bottom:7px}
+  #view-futures .fxboard{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  #view-futures .fxbhead{display:grid;grid-template-columns:.9fr 62px 104px 2.5fr;gap:10px;padding:9px 13px;background:var(--sub);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+  #view-futures .fxbrow{display:grid;grid-template-columns:.9fr 62px 104px 2.5fr;gap:10px;padding:12px 13px;border-top:1px solid var(--line);align-items:center}
+  #view-futures .fxteam{font-weight:700;font-size:14px}
+  #view-futures .fxouw{display:flex;align-items:baseline;gap:3px}
+  #view-futures .fxouw .ou{font-size:10px;font-weight:700;color:var(--muted)}
+  #view-futures .fxouw .ln{font-family:Anton;font-size:22px;line-height:.9}
+  #view-futures .fxbadge{font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+  #view-futures .fxbadge.fam{color:var(--pos);background:var(--posbg)}
+  #view-futures .fxbadge.spl{color:var(--push);background:var(--pushbg)}
+  #view-futures .fxpicks{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+  #view-futures .fxpc{flex:1;min-width:100px;text-align:center;display:flex;flex-direction:column}
+  #view-futures .fxph{font-size:11px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:3px}
+  #view-futures .fxph .fxdot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(128,128,128,.35)}
+  #view-futures .fxph .bt{font-size:8.5px;font-weight:800;color:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:0 4px}
+  #view-futures .fxpk{font-size:13px;font-weight:800;margin-bottom:4px}
+  #view-futures .fxpk.o{color:var(--pos)} #view-futures .fxpk.u{color:var(--neg)}
+  #view-futures .fxpk.pass{color:var(--faint);font-size:15px;margin:auto 0}
+  #view-futures .fxog{display:grid;grid-template-columns:1fr 1fr;gap:2px 4px}
+  #view-futures .fxog .l{font-size:11px;color:var(--faint)}
+  #view-futures .fxog .vv{font-size:11px;font-weight:800}
+  #view-futures .fxog .vv.soon{font-weight:500;font-style:italic;color:var(--faint);opacity:.75}
+  #view-futures .fxtbl{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  #view-futures .fxg4{display:grid;grid-template-columns:32px minmax(0,1fr) 58px 66px;gap:9px}
+  #view-futures .fxg5{display:grid;grid-template-columns:32px minmax(0,1.5fr) minmax(96px,1fr) 56px 64px;gap:9px}
+  #view-futures .fxgdw{display:grid;grid-template-columns:32px minmax(0,1fr) 62px 68px;gap:9px}
+  #view-futures .fxthead{padding:9px 13px;background:var(--sub);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+  #view-futures .fxthead.fxg5 span:nth-child(3){text-align:center}
+  #view-futures .fxr{padding:11px 13px;border-top:1px solid var(--line);align-items:center}
+  #view-futures .fxboard .fxr:first-of-type,#view-futures .fxtbl .fxr:first-of-type{border-top:none}
+  #view-futures .fxav{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800;border:1px solid rgba(128,128,128,.3)}
+  #view-futures .fxbtype{font-size:11px;color:var(--muted);font-weight:600;line-height:1.25;text-align:center}
+  #view-futures .fxbname{font-size:13px}
+  #view-futures .fxoval{font-size:12px;font-weight:800}
+  #view-futures .fxoval.long{color:var(--brand)}
+  #view-futures .fxlval{font-size:11px;color:var(--faint);font-weight:500;font-style:italic;opacity:.75}
+  #view-futures .fxexw{text-align:center;margin-top:9px}
+  #view-futures .fxexpand{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer}
+  @media(max-width:820px){#view-futures .fx-strip{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -166,8 +228,8 @@
     <div class="rmark">R</div>
     <div class="brandtxt">Wise Guys<small>Betting Dashboard</small></div>
     <div class="nav">
-      <button class="tab on">Best Bets</button>
-      <button class="tab off">Futures</button>
+      <button class="tab on" id="tabBest">Best Bets</button>
+      <button class="tab" id="tabFut">Futures</button>
     </div>
     <div class="spacer"></div>
     <button class="theme" id="themeBtn">◐ Dark</button>
@@ -175,6 +237,7 @@
 </header>
 
 <div class="wrap">
+  <div id="view-bb">
   <div class="sec"><span class="eyebrow">Overall · August 2026</span><span class="rule"></span></div>
   <section class="hero">
     <div class="left">
@@ -217,7 +280,25 @@
     </div>
   </section>
 
+  </div><!-- /view-bb -->
+
+  <div id="view-futures" style="display:none">
+    <div class="sec"><span class="eyebrow">Futures &middot; predictions &amp; staked plays</span><span class="rule"></span></div>
+    <div class="fx-sports" id="fx-sports"></div>
+    <div class="fx-strip" id="fx-strip"></div>
+    <div class="fxcap" id="fx-cap" style="display:none">Max Units = total take if every staked market play (Division Winners, Player Props, Playoff Props) hits, at 1 unit each. Longshots are tracked separately.</div>
+    <div class="fx-tabs" id="fx-tabs">
+      <button class="fxtab on" data-t="wt">Win Totals</button>
+      <button class="fxtab" data-t="dw">Division Winners</button>
+      <button class="fxtab" data-t="pp">Player Props</button>
+      <button class="fxtab" data-t="ls">Longshots</button>
+    </div>
+    <div class="fx-bubbles" id="fx-bubbles"></div>
+    <div id="fx-sections"></div>
+  </div>
+
   <footer>
+    <span id="lastUpdated">Last updated: &mdash;</span>
     <span id="dataflag">Data: August 2026</span>
     <span class="flag">Not affiliated with The Ringer</span>
   </footer>
@@ -448,12 +529,192 @@ function drawOverall(){
   const bbc=document.getElementById("bbCount"); if(bbc) bbc.textContent = r.pend ? `${r.settled} · ${r.pend} pending` : `${r.settled} bets`;
 }
 function init(){ buildCum(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
+/* ================= FUTURES ================= */
+let FUT = null;
+const fxHost = {"House":{i:"JH",t:"#0c0c0d"},"Dabbundo":{i:"AD",t:"#c99a2e"},"Raheem":{i:"RP",t:"#e4032b"},
+                "Sal":{i:"CS",t:"#5b5b60"},"Tate":{i:"TF",t:"#2f7fb8"},"Group":{i:"GR",t:"#5b5b60"}};
+const fxSportList = ["Football","NBA","MLB","College Football"];
+const fxDivOrder = ["AFC East","AFC North","AFC South","AFC West","NFC East","NFC North","NFC South","NFC West","Big Ten","ACC","SEC","Big 12"];
+const fxTabsBySport = {
+  "Football": [["wt","Win Totals"],["dw","Division Winners"],["pp","Player Props"],["ls","Longshots"]],
+  "College Football": [["wt","Win Totals"],["pf","Playoff Props"],["ls","Longshots"]]
+};
+function fxTabsFor(sport){ return fxTabsBySport[sport] || fxTabsBySport["Football"]; }
+const fxBoardCap = 6;
+const fxState = {sport:"Football", tab:"wt", div:"all", exp:{}, boardExp:{}, built:false};
+
+function fmtWhen(iso){ if(!iso) return "\u2014"; const d=new Date(iso); if(isNaN(d)) return iso;
+  return d.toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}); }
+function fxTint(h){ return (fxHost[h]||{t:"#5b5b60"}).t; }
+function fxAv(h){ const x=fxHost[h]||{i:(h||"?").slice(0,2).toUpperCase(),t:"#5b5b60"}; return '<span class="fxav" style="background:'+x.t+'">'+x.i+'</span>'; }
+function fxEmpty(){ return '<div class="fxcap">Nothing logged here yet.</div>'; }
+
+function fxDivsFor(sp){
+  return fxDivOrder.filter(d =>
+    (sp.win_totals&&sp.win_totals[d]) || (sp.division_winners&&sp.division_winners[d]) ||
+    (sp.player_props&&sp.player_props[d]) ||
+    (sp.playoff_props||[]).some(l=>l.division===d) || (sp.longshots||[]).some(l=>l.division===d));
+}
+
+function fxBoard(sp, div){
+  const teams=(sp.win_totals||{})[div]; if(!teams||!teams.length) return "";
+  const rows=teams.map(t=>{
+    const picks=t.picks.map(p=>{
+      const dot='<span class="fxdot" style="background:'+fxTint(p.host)+'"></span>';
+      if(p.side==="pass") return '<div class="fxpc"><div class="fxph">'+dot+p.host+'</div><div class="fxpk pass">Pass</div></div>';
+      const bt=p.alt?'<span class="bt">Alt</span>':'';
+      const live=p.odds.live?p.odds.live:'soon';
+      return '<div class="fxpc"><div class="fxph">'+dot+p.host+bt+'</div>'+
+        '<div class="fxpk '+(p.side==='over'?'o':'u')+'">'+p.selection+'</div>'+
+        '<div class="fxog"><span class="l">Odds</span><span class="l">Live Odds</span>'+
+        '<span class="vv num">'+(p.odds.bet||'\u2014')+'</span><span class="vv soon num">'+live+'</span></div></div>';
+    }).join("");
+    const bd = t.consensus==="family" ? '<span class="fxbadge fam">Family Play</span>'
+             : t.consensus==="split" ? '<span class="fxbadge spl">Split</span>' : '';
+    return '<div class="fxbrow"><div class="fxteam">'+t.team+'</div>'+
+      '<div class="fxouw"><span class="ou">O/U</span><span class="ln num">'+t.line+'</span></div>'+
+      '<div>'+bd+'</div><div class="fxpicks">'+picks+'</div></div>';
+  }).join("");
+  const title = div + (teams.length>fxBoardCap ? ' \u00b7 '+teams.length+' teams' : '');
+  return '<div class="fxdboard" data-div="'+div+'"><div class="fxdtitle">'+title+'</div>'+
+    '<div class="fxboard" data-board="'+div+'"><div class="fxbhead"><span>Team</span><span>Line</span><span>Consensus</span><span>Pick</span></div>'+rows+'</div>'+
+    '<div class="fxexw"><button class="fxbexpand" data-board="'+div+'" style="display:none">Show all</button></div></div>';
+}
+
+function fxDw(sp, div){
+  const list=(sp.division_winners||{})[div]; if(!list||!list.length) return "";
+  const rows=list.map(r=>'<div class="fxr fxgdw">'+fxAv(r.host)+'<span class="fxbname">'+r.team+'</span>'+
+    '<span class="fxoval num">'+r.odds.bet+'</span><span class="fxlval num">'+(r.odds.live||'soon')+'</span></div>').join("");
+  return '<div class="fxdboard" data-div="'+div+'"><div class="fxdtitle">'+div+'</div>'+
+    '<div class="fxboard"><div class="fxthead fxgdw"><span></span><span>To Win Division</span><span>Odds</span><span>Live Odds</span></div>'+rows+'</div></div>';
+}
+
+function fxTbl(list, showType, longOdds){
+  const g=showType?'fxg5':'fxg4';
+  const head='<div class="fxthead '+g+'"><span></span><span>Bet</span>'+(showType?'<span>Bet Type</span>':'')+'<span>Odds</span><span>Live Odds</span></div>';
+  const body=list.map(r=>{
+    const od='<span class="fxoval'+(longOdds?' long':'')+' num">'+r.odds.bet+'</span>';
+    return '<div class="fxr '+g+'" data-div="'+r.division+'">'+fxAv(r.host)+
+      '<span class="fxbname">'+r.bet+'</span>'+(showType?'<span class="fxbtype">'+r.bet_type+'</span>':'')+
+      od+'<span class="fxlval num">'+(r.odds.live||'soon')+'</span></div>';
+  }).join("");
+  return '<div class="fxtbl">'+head+body+'</div><div class="fxexw"><button class="fxexpand" style="display:none">Show all</button></div>';
+}
+
+function fxSummaryStrip(){
+  const s=(FUT.sports[fxState.sport]||{}).summary||{};
+  function tile(k,v,info){ return '<div class="fxtile"><div class="k">'+k+'</div><div class="v num">'+(v==null?'\u2014':v)+'</div>'+(info?'<span class="i" id="fxInfo">i</span>':'')+'</div>'; }
+  document.getElementById("fx-strip").innerHTML =
+    tile("Open Predictions", s.open_predictions) + tile("Staked Plays", s.staked_plays) +
+    tile("Longshots", s.longshots) + tile("Max Units", s.max_units, true);
+}
+
+function fxSports(){
+  const sports=FUT.sports||{};
+  document.getElementById("fx-sports").innerHTML = fxSportList.map(s=>{
+    const dis=!sports[s], on=(s===fxState.sport&&!dis);
+    return '<button class="fxsport'+(on?' on':'')+(dis?' dis':'')+'" data-s="'+s+'">'+s+'</button>';
+  }).join("");
+}
+
+function fxRenderTabs(){
+  document.getElementById("fx-tabs").innerHTML = fxTabsFor(fxState.sport).map(x=>
+    '<button class="fxtab'+(x[0]===fxState.tab?' on':'')+'" data-t="'+x[0]+'">'+x[1]+'</button>').join("");
+}
+
+function fxBubbles(){
+  const divs=fxDivsFor(FUT.sports[fxState.sport]||{});
+  document.getElementById("fx-bubbles").innerHTML =
+    '<button class="fxbub'+(fxState.div==='all'?' on':'')+'" data-d="all">All</button>' +
+    divs.map(d=>'<button class="fxbub'+(fxState.div===d?' on':'')+'" data-d="'+d+'"><span class="bd"></span>'+d+'</button>').join("");
+}
+
+function fxBuild(){
+  const sp=FUT.sports[fxState.sport];
+  const sec=document.getElementById("fx-sections");
+  if(!sp){ sec.innerHTML='<div class="fxcap">No futures logged for '+fxState.sport+' yet.</div>'; return; }
+  const divs=fxDivsFor(sp);
+  const ppFlat=[]; Object.keys(sp.player_props||{}).forEach(d=>(sp.player_props[d]||[]).forEach(x=>ppFlat.push(Object.assign({division:d},x))));
+  const tabs=fxTabsFor(fxState.sport).map(x=>x[0]);
+  let html="";
+  if(tabs.includes("wt")) html+='<div data-tab="wt">'+(divs.map(d=>fxBoard(sp,d)).join("")||fxEmpty())+'</div>';
+  if(tabs.includes("dw")) html+='<div data-tab="dw">'+(divs.map(d=>fxDw(sp,d)).join("")||fxEmpty())+'</div>';
+  if(tabs.includes("pp")) html+='<div data-tab="pp">'+(ppFlat.length?fxTbl(ppFlat,false,false):fxEmpty())+'</div>';
+  if(tabs.includes("pf")) html+='<div data-tab="pf">'+((sp.playoff_props||[]).length?fxTbl(sp.playoff_props,true,false):fxEmpty())+'</div>';
+  if(tabs.includes("ls")) html+='<div data-tab="ls">'+((sp.longshots||[]).length?fxTbl(sp.longshots,true,true):fxEmpty())+'</div>';
+  sec.innerHTML=html;
+}
+
+function fxRender(){
+  document.querySelectorAll("#fx-sections > div").forEach(s=>s.style.display=(s.getAttribute("data-tab")===fxState.tab?"":"none"));
+  const active=document.querySelector('#fx-sections > div[data-tab="'+fxState.tab+'"]');
+  if(!active) return;
+  active.querySelectorAll(".fxdboard[data-div]").forEach(el=>el.style.display=(fxState.div==="all"||el.getAttribute("data-div")===fxState.div)?"":"none");
+  active.querySelectorAll(".fxboard[data-board]").forEach(bd=>{
+    const conf=bd.getAttribute("data-board"), rows=[].slice.call(bd.querySelectorAll(".fxbrow"));
+    const exp=!!fxState.boardExp[conf], lim=exp?rows.length:fxBoardCap;
+    rows.forEach((r,i)=>r.style.display=i<lim?"":"none");
+    const btn=bd.parentNode.querySelector(".fxbexpand");
+    if(btn){ if(rows.length>fxBoardCap){btn.style.display="";btn.textContent=exp?"Show less":("Show all "+rows.length+" teams");} else {btn.style.display="none";} }
+  });
+  const tbl=active.querySelector(".fxtbl"), btn=active.querySelector(".fxexpand");
+  if(tbl){
+    const rows=[].slice.call(tbl.querySelectorAll(".fxr"));
+    const matches=rows.filter(r=>fxState.div==="all"||r.getAttribute("data-div")===fxState.div);
+    rows.forEach(r=>r.style.display="none");
+    const exp=!!fxState.exp[fxState.tab], lim=exp?matches.length:5;
+    matches.slice(0,lim).forEach(r=>r.style.display="");
+    if(btn){ if(matches.length>5){btn.style.display="";btn.textContent=exp?"Show less":("Show all "+matches.length);} else {btn.style.display="none";} }
+  }
+}
+
+function fxSwitchSport(sport){
+  fxState.sport=sport; fxState.tab=fxTabsFor(sport)[0][0]; fxState.div="all"; fxState.exp={}; fxState.boardExp={};
+  fxSports(); fxRenderTabs(); fxBubbles(); fxSummaryStrip(); fxBuild(); fxRender();
+}
+
+function fxInit(){
+  if(!FUT){ document.getElementById("fx-sections").innerHTML='<div class="fxcap">No futures data found.</div>'; return; }
+  fxSummaryStrip(); fxSports(); fxRenderTabs(); fxBubbles(); fxBuild(); fxRender();
+  document.getElementById("fx-strip").addEventListener("click", e=>{
+    if(e.target.id==="fxInfo"){ const c=document.getElementById("fx-cap"); c.style.display=(c.style.display==="none"?"block":"none"); }});
+  document.getElementById("fx-sports").addEventListener("click", e=>{
+    const b=e.target.closest(".fxsport"); if(!b||b.classList.contains("dis"))return; fxSwitchSport(b.dataset.s); });
+  document.getElementById("fx-tabs").addEventListener("click", e=>{
+    const b=e.target.closest(".fxtab"); if(!b)return;
+    document.querySelectorAll("#fx-tabs .fxtab").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+    fxState.tab=b.dataset.t; fxRender(); });
+  document.getElementById("fx-bubbles").addEventListener("click", e=>{
+    const b=e.target.closest(".fxbub"); if(!b)return;
+    document.querySelectorAll("#fx-bubbles .fxbub").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+    fxState.div=b.dataset.d; fxRender(); });
+  document.getElementById("fx-sections").addEventListener("click", e=>{
+    const bt=e.target.closest(".fxbexpand");
+    if(bt){ const c=bt.getAttribute("data-board"); fxState.boardExp[c]=!fxState.boardExp[c]; fxRender(); return; }
+    const b=e.target.closest(".fxexpand"); if(!b)return; fxState.exp[fxState.tab]=!fxState.exp[fxState.tab]; fxRender(); });
+}
+
+function showView(v){
+  document.getElementById("view-bb").style.display = v==="fut"?"none":"";
+  document.getElementById("view-futures").style.display = v==="fut"?"":"none";
+  document.getElementById("tabBest").classList.toggle("on", v!=="fut");
+  document.getElementById("tabFut").classList.toggle("on", v==="fut");
+  if(v==="fut" && !fxState.built){ fxInit(); fxState.built=true; }
+}
+document.getElementById("tabBest").addEventListener("click", ()=>showView("bb"));
+document.getElementById("tabFut").addEventListener("click", ()=>showView("fut"));
+
+
 fetch('data.json', {cache:'no-store'})
   .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(data=>{
     bets = data.bets || [];
+    FUT = data.futures || null;
     if(data.meta && data.meta.range){
       document.getElementById('dataflag').textContent = 'Data: ' + data.meta.range;
+    }
+    if(data.meta && data.meta.generated){
+      document.getElementById('lastUpdated').textContent = 'Last updated: ' + fmtWhen(data.meta.generated);
     }
     init();
   })
