@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-08-16",
-    "range": "8/7\u20138/14",
-    "count": 18,
+    "generated": "2026-08-17T22:48",
+    "range": "8/7\u20138/17",
+    "count": 22,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -185,6 +185,2041 @@
       "odds": "+115",
       "result": "W",
       "net": 1.15
+    },
+    {
+      "date": "8/17",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Mets ML",
+      "odds": "-111",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/17",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "White Sox/Cubs Under 8.5",
+      "odds": "-114",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/17",
+      "host": "Cousin Sal",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rockies ML",
+      "odds": "+235",
+      "result": "Pending",
+      "net": null
+    },
+    {
+      "date": "8/17",
+      "host": "Raheem Palmer",
+      "type": "Spread",
+      "sport": "MLB",
+      "bet": "Phillies -1.5 (run line)",
+      "odds": "-118",
+      "result": "Pending",
+      "net": null
     }
-  ]
+  ],
+  "futures": {
+    "sports": {
+      "Football": {
+        "win_totals": {
+          "AFC East": [
+            {
+              "team": "Bills",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "+100",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "pass",
+                  "selection": "Pass",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Patriots",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-150",
+                    "live": null
+                  },
+                  "stake": "Play",
+                  "alt": true
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Jets",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 5.5",
+                  "odds": {
+                    "bet": "+100",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 5.5",
+                  "odds": {
+                    "bet": "+100",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 5.5",
+                  "odds": {
+                    "bet": "+100",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Dolphins",
+              "line": "3.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 3.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 3.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "pass",
+                  "selection": "Pass",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            }
+          ],
+          "AFC North": [
+            {
+              "team": "Ravens",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 11.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 11.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Bengals",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+105",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "-125",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "-125",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Steelers",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Browns",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "-110",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "-110",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 5.5",
+                  "odds": {
+                    "bet": "-110",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            }
+          ],
+          "AFC South": [
+            {
+              "team": "Texans",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Jaguars",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "-135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Colts",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Titans",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "-135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            }
+          ]
+        },
+        "division_winners": {
+          "AFC East": [
+            {
+              "host": "House",
+              "team": "Bills",
+              "odds": {
+                "bet": "-130",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "team": "Patriots",
+              "odds": {
+                "bet": "+130",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "team": "Patriots",
+              "odds": {
+                "bet": "+130",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "AFC North": [
+            {
+              "host": "House",
+              "team": "Bengals",
+              "odds": {
+                "bet": "+170",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "team": "Ravens",
+              "odds": {
+                "bet": "+100",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "team": "Steelers",
+              "odds": {
+                "bet": "+500",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "AFC South": [
+            {
+              "host": "House",
+              "team": "Texans",
+              "odds": {
+                "bet": "+115",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "team": "Texans",
+              "odds": {
+                "bet": "+115",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "team": "Titans",
+              "odds": {
+                "bet": "+950",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ]
+        },
+        "player_props": {
+          "AFC North": [
+            {
+              "host": "House",
+              "bet": "Joe Burrow over 3,900.5 pass yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "bet": "Chase Brown over 825.5 rushing yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "AFC South": [
+            {
+              "host": "Raheem",
+              "bet": "Trevor Lawrence over 3,750.5 pass yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "bet": "Nico Collins over 1,050.5 rec yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "AFC East": [
+            {
+              "host": "Raheem",
+              "bet": "Malik Willis over 550.5 rushing yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "bet": "Josh Allen over 10.5 rushing TDs",
+              "odds": {
+                "bet": "-128",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "bet": "AJ Brown 10+ TDs",
+              "odds": {
+                "bet": "+260",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ]
+        },
+        "playoff_props": [],
+        "longshots": [
+          {
+            "host": "Raheem",
+            "bet": "Jets over 6.5 wins",
+            "bet_type": "Alternate Win Total",
+            "division": "AFC East",
+            "odds": {
+              "bet": "+210",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "House",
+            "bet": "Bengals over 11.5 wins",
+            "bet_type": "Alternate Win Total",
+            "division": "AFC North",
+            "odds": {
+              "bet": "+175",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Raheem",
+            "bet": "Patriots more wins than Bills",
+            "bet_type": "Matchup",
+            "division": "AFC East",
+            "odds": {
+              "bet": "+140",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Dabbundo",
+            "bet": "Denzel Boston \u2014 Offensive ROY",
+            "bet_type": "Award",
+            "division": "AFC North",
+            "odds": {
+              "bet": "+4000",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Tate",
+            "bet": "Denzel Boston \u2014 Most Rookie Rec Yds",
+            "bet_type": "Player Prop",
+            "division": "AFC North",
+            "odds": {
+              "bet": "+1200",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Dabbundo",
+            "bet": "Nico Collins \u2014 Offensive POY",
+            "bet_type": "Award",
+            "division": "AFC South",
+            "odds": {
+              "bet": "+4500",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Raheem",
+            "bet": "Chase Brown 1,000+ rushing yds",
+            "bet_type": "Player Prop",
+            "division": "AFC North",
+            "odds": {
+              "bet": "+215",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "House",
+            "bet": "AFC East exact order (Pats, Bills, Jets, Dolphins)",
+            "bet_type": "Order of Finish",
+            "division": "AFC East",
+            "odds": {
+              "bet": "+291",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Jets to finish 3rd in division",
+            "bet_type": "Order of Finish",
+            "division": "AFC East",
+            "odds": {
+              "bet": "+100",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Dabbundo",
+            "bet": "Jets worst record in NFL",
+            "bet_type": "Team Prop",
+            "division": "AFC East",
+            "odds": {
+              "bet": "+900",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Raheem",
+            "bet": "Joe Brady \u2014 Coach of the Year",
+            "bet_type": "Award",
+            "division": "AFC East",
+            "odds": {
+              "bet": "+1500",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Raheem",
+            "bet": "Steelers 4th + Browns 3rd (parlay)",
+            "bet_type": "Parlay",
+            "division": "AFC North",
+            "odds": {
+              "bet": "+382",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Group",
+            "bet": "AFC North alt-total 4-leg parlay",
+            "bet_type": "Parlay (Group Play)",
+            "division": "AFC North",
+            "odds": {
+              "bet": "+7028",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Group",
+            "bet": "AFC South alt-total 4-leg parlay",
+            "bet_type": "Parlay (Group Play)",
+            "division": "AFC South",
+            "odds": {
+              "bet": "+1944",
+              "live": null
+            },
+            "result": "Pending"
+          }
+        ],
+        "summary": {
+          "open_predictions": 54,
+          "staked_plays": 31,
+          "longshots": 14,
+          "max_units": 46.6
+        }
+      },
+      "College Football": {
+        "win_totals": {
+          "Big Ten": [
+            {
+              "team": "Ohio State",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-164",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 9.5",
+                  "odds": {
+                    "bet": "+134",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Oregon",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+106",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+106",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Indiana",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-105",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "-115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "USC",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+110",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Michigan",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "-180",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+146",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Penn State",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 9.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 9.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Washington",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "+134",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Minnesota",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "+130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Iowa",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Illinois",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Wisconsin",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "UCLA",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Nebraska",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Northwestern",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Maryland",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Rutgers",
+              "line": "4.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Michigan State",
+              "line": "4.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Purdue",
+              "line": "3.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 3.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 3.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            }
+          ],
+          "ACC": [
+            {
+              "team": "Miami",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-148",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-148",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "SMU",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 8.5",
+                  "odds": {
+                    "bet": "+114",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Louisville",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+108",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+108",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Clemson",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "-134",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "-134",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Pittsburgh",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "+112",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "+112",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Virginia",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "-134",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "-134",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Georgia Tech",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "+118",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Virginia Tech",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "-170",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "-170",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "NC State",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-132",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Cal",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Florida State",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Duke",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Wake Forest",
+              "line": "5.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 5.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Syracuse",
+              "line": "4.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "under",
+                  "selection": "Under 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "North Carolina",
+              "line": "4.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Play",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Stanford",
+              "line": "4.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "over",
+                  "selection": "Over 4.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Boston College",
+              "line": "3.5",
+              "picks": [
+                {
+                  "host": "Tate",
+                  "side": "over",
+                  "selection": "Over 3.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Sal",
+                  "side": "under",
+                  "selection": "Under 3.5",
+                  "odds": {
+                    "bet": "",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            }
+          ]
+        },
+        "division_winners": {},
+        "player_props": {},
+        "playoff_props": [
+          {
+            "host": "Sal",
+            "bet": "Indiana to miss the CFP",
+            "bet_type": "Miss CFP",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+200",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Tate",
+            "bet": "USC to make the CFP",
+            "bet_type": "Make CFP",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+260",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Oregon to win the Big Ten",
+            "bet_type": "Conference Winner",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+260",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Tate",
+            "bet": "Ohio State to win the Big Ten",
+            "bet_type": "Conference Winner",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+180",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Louisville to make the CFP",
+            "bet_type": "Make CFP",
+            "division": "ACC",
+            "odds": {
+              "bet": "+460",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Tate",
+            "bet": "SMU to make the CFP",
+            "bet_type": "Make CFP",
+            "division": "ACC",
+            "odds": {
+              "bet": "+450",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Miami to win the ACC",
+            "bet_type": "Conference Winner",
+            "division": "ACC",
+            "odds": {
+              "bet": "-150",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Tate",
+            "bet": "Miami to win the ACC",
+            "bet_type": "Conference Winner",
+            "division": "ACC",
+            "odds": {
+              "bet": "-140",
+              "live": null
+            },
+            "result": "Pending"
+          }
+        ],
+        "longshots": [
+          {
+            "host": "Tate",
+            "bet": "Julian Sayin \u2014 Heisman",
+            "bet_type": "Heisman Winner",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+1300",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Dante Moore \u2014 Heisman",
+            "bet_type": "Heisman Winner",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+1100",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Jeremiah Smith \u2014 Heisman",
+            "bet_type": "Heisman Winner",
+            "division": "Big Ten",
+            "odds": {
+              "bet": "+1200",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Tate",
+            "bet": "Darian Mensah \u2014 Heisman",
+            "bet_type": "Heisman Winner",
+            "division": "ACC",
+            "odds": {
+              "bet": "+1100",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "Malachi Toney \u2014 Heisman",
+            "bet_type": "Heisman Winner",
+            "division": "ACC",
+            "odds": {
+              "bet": "+3500",
+              "live": null
+            },
+            "result": "Pending"
+          }
+        ],
+        "summary": {
+          "open_predictions": 55,
+          "staked_plays": 14,
+          "longshots": 5,
+          "max_units": 27.5
+        }
+      }
+    }
+  }
 }
