@@ -217,7 +217,7 @@
   #view-futures .fxoval.long{color:var(--brand)}
   #view-futures .fxlval{font-size:11px;color:var(--faint);font-weight:500;font-style:italic;opacity:.75}
   #view-futures .fxexw{text-align:center;margin-top:9px}
-  #view-futures .fxexpand{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer}
+  #view-futures .fxexpand,#view-futures .fxbexpand{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer}
   @media(max-width:820px){#view-futures .fx-strip{grid-template-columns:repeat(2,1fr)}}
 
 </style>
@@ -533,7 +533,7 @@ function init(){ buildCum(); drawOverall(); drawHero(); drawHosts(); drawTypes()
 let FUT = null;
 const fxHost = {"House":{i:"JH",t:"#0c0c0d"},"Dabbundo":{i:"AD",t:"#c99a2e"},"Raheem":{i:"RP",t:"#e4032b"},
                 "Sal":{i:"CS",t:"#5b5b60"},"Tate":{i:"TF",t:"#2f7fb8"},"Group":{i:"GR",t:"#5b5b60"}};
-const fxSportList = ["Football","NBA","MLB","College Football"];
+const fxSportList = ["Football","College Football","NBA","MLB"];
 const fxDivOrder = ["AFC East","AFC North","AFC South","AFC West","NFC East","NFC North","NFC South","NFC West","Big Ten","ACC","SEC","Big 12"];
 const fxTabsBySport = {
   "Football": [["wt","Win Totals"],["dw","Division Winners"],["pp","Player Props"],["ls","Longshots"]],
