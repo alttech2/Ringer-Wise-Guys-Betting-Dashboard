@@ -694,18 +694,26 @@ function fxInit(){
     const b=e.target.closest(".fxexpand"); if(!b)return; fxState.exp[fxState.tab]=!fxState.exp[fxState.tab]; fxRender(); });
 }
 
-function showView(v){
+function pathToView(){
+  return location.pathname.replace(/\/+$/,"").toLowerCase().endsWith("/futures") ? "fut" : "bb";
+}
+function showView(v, updateURL){
   document.getElementById("view-bb").style.display = v==="fut"?"none":"";
   document.getElementById("view-futures").style.display = v==="fut"?"":"none";
   document.getElementById("tabBest").classList.toggle("on", v!=="fut");
   document.getElementById("tabFut").classList.toggle("on", v==="fut");
   if(v==="fut" && !fxState.built){ fxInit(); fxState.built=true; }
+  if(updateURL){
+    const path = v==="fut" ? "/futures" : "/best-bets";
+    if(location.pathname !== path) history.pushState({v}, "", path);
+  }
 }
-document.getElementById("tabBest").addEventListener("click", ()=>showView("bb"));
-document.getElementById("tabFut").addEventListener("click", ()=>showView("fut"));
+document.getElementById("tabBest").addEventListener("click", ()=>showView("bb", true));
+document.getElementById("tabFut").addEventListener("click", ()=>showView("fut", true));
+window.addEventListener("popstate", ()=>showView(pathToView(), false));
 
 
-fetch('data.json', {cache:'no-store'})
+fetch('/data.json', {cache:'no-store'})
   .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(data=>{
     bets = data.bets || [];
@@ -717,6 +725,7 @@ fetch('data.json', {cache:'no-store'})
       document.getElementById('lastUpdated').textContent = 'Last updated: ' + fmtWhen(data.meta.generated);
     }
     init();
+    showView(pathToView(), false);
   })
   .catch(err=>{
     document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
