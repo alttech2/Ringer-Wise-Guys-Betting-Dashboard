@@ -89,7 +89,7 @@
     padding:13px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
   .hrow:hover{background:var(--sub)}
   .chev{color:var(--faint);font-size:12px;transition:transform .18s;display:inline-block}
-  .hrow.open .chev,.trow.open .chev,.sportrow.open .chev{transform:rotate(90deg);color:var(--ink)}
+  .hrow.open .chev,.trow.open .chev,.sportrow.open .chev,.catrow.open .chev{transform:rotate(90deg);color:var(--ink)}
   .who{display:flex;align-items:center;gap:12px;min-width:0}
   .rank{font-family:Anton;font-size:15px;color:var(--faint);width:14px;text-align:center}
   .av{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff}
@@ -143,7 +143,8 @@
   .tlist.open{display:block}
 
   .pill{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:9px;border:1px solid var(--line);font-size:13px;font-weight:600;margin-bottom:8px}
-  .pill.sportrow{cursor:pointer}
+  .pill.sportrow,.pill.catrow,.pill.catfut{cursor:pointer}
+  .pill.catfut:hover{border-color:var(--muted)}
   .pill .d{width:8px;height:8px;border-radius:50%}
   .pill.active{border-color:transparent;background:var(--posbg);color:var(--pos)}
   .pill.soon{color:var(--faint)}
@@ -184,6 +185,9 @@
   #view-futures .fxbhead{display:grid;grid-template-columns:.9fr 62px 104px 2.5fr;gap:10px;padding:9px 13px;background:var(--sub);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
   #view-futures .fxbrow{display:grid;grid-template-columns:.9fr 62px 104px 2.5fr;gap:10px;padding:12px 13px;border-top:1px solid var(--line);align-items:center}
   #view-futures .fxteam{font-weight:700;font-size:14px}
+  #view-futures .fxteam.stacked{display:flex;flex-direction:column;line-height:1.15}
+  #view-futures .fxteam .fxcity{font-size:14px;font-weight:700;color:var(--ink)}
+  #view-futures .fxteam .fxmascot{font-size:18px;font-weight:700}
   #view-futures .fxouw{display:flex;align-items:baseline;gap:3px}
   #view-futures .fxouw .ou{font-size:10px;font-weight:700;color:var(--muted)}
   #view-futures .fxouw .ln{font-family:Anton;font-size:22px;line-height:.9}
@@ -193,7 +197,6 @@
   #view-futures .fxpicks{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
   #view-futures .fxpc{flex:1;min-width:100px;text-align:center;display:flex;flex-direction:column}
   #view-futures .fxph{font-size:11px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:3px}
-  #view-futures .fxph .fxdot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(128,128,128,.35)}
   #view-futures .fxph .bt{font-size:8.5px;font-weight:800;color:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:0 4px}
   #view-futures .fxpk{font-size:13px;font-weight:800;margin-bottom:4px}
   #view-futures .fxpk.o{color:var(--pos)} #view-futures .fxpk.u{color:var(--neg)}
@@ -274,9 +277,8 @@
       <div id="sports"></div>
     </div>
     <div class="bcard">
-      <h4>By category</h4>
-      <div class="pill active"><span class="d" style="background:var(--pos)"></span>Best Bets <span class="r" id="bbCount">&mdash;</span></div>
-      <div class="pill soon"><span class="d" style="background:var(--faint)"></span>Futures <span class="r">Coming soon</span></div>
+      <h4>By category · tap to expand</h4>
+      <div id="category"></div>
     </div>
   </section>
 
@@ -461,7 +463,7 @@ function drawHosts(){
         <div class="pt" id="pt-h-${i}"></div>
       </div>`;
   }).join("");
-  rows.forEach((h,i)=>pagedTable(document.getElementById("pt-h-"+i), h.list, false));
+  rows.forEach((h,i)=>pagedTable(document.getElementById("pt-h-"+i), h.list.slice().reverse(), false));
   rows.forEach((h,i)=>makeChart(document.getElementById("spark-"+i), hostSeries(h.list), {h:150, padL:34, padT:16, color:(h.net>=0?"var(--pos)":"var(--neg)")}));
   document.querySelectorAll(".hrow").forEach(row=>row.addEventListener("click",()=>{
     const i=row.dataset.i;
@@ -481,7 +483,7 @@ function drawTypes(){
         <span class="trec num">${r.str}</span></div>
       <div class="tlist" data-tl="${i}"><div class="pt" id="pt-t-${i}"></div></div>`;
   }).join("");
-  rows.forEach((r,i)=>pagedTable(document.getElementById("pt-t-"+i), r.list, true));
+  rows.forEach((r,i)=>pagedTable(document.getElementById("pt-t-"+i), r.list.slice().reverse(), true));
   document.querySelectorAll(".trow").forEach(row=>row.addEventListener("click",()=>{
     const i=row.dataset.t;
     row.classList.toggle("open");
@@ -503,12 +505,29 @@ function drawSports(){
   }).join("");
   document.getElementById("sports").innerHTML=html;
   sportOrder.forEach((s,i)=>{const list=bets.filter(b=>b.sport===s);
-    if(list.length) pagedTable(document.getElementById("pt-s-"+i), list, true);});
+    if(list.length) pagedTable(document.getElementById("pt-s-"+i), list.slice().reverse(), true);});
   document.querySelectorAll(".sportrow").forEach(row=>row.addEventListener("click",()=>{
     const i=row.dataset.s;
     row.classList.toggle("open");
     document.querySelector(`.tlist[data-sl="${i}"]`).classList.toggle("open");
   }));
+}
+
+/* ---------- by category (Best Bets expandable ledger + Futures redirect) ---------- */
+function drawCategory(){
+  const r=recOf(bets);
+  const dot=r.net>0?'var(--pos)':r.net<0?'var(--neg)':'var(--faint)';
+  document.getElementById("category").innerHTML=
+    `<div class="pill active catrow" id="catBest"><span class="chev">▶</span>
+        <span class="d" style="background:${dot}"></span>Best Bets
+        <span class="r" id="bbCount">&mdash;</span></div>
+      <div class="tlist" id="catBestList"><div class="pt" id="pt-cat"></div></div>
+      <div class="pill catfut" id="catFut"><span class="d" style="background:var(--brand)"></span>Futures <span class="r">View board &rarr;</span></div>`;
+  pagedTable(document.getElementById("pt-cat"), bets.slice().reverse(), true);
+  const row=document.getElementById("catBest");
+  row.addEventListener("click",()=>{ row.classList.toggle("open");
+    document.getElementById("catBestList").classList.toggle("open"); });
+  document.getElementById("catFut").addEventListener("click", ()=>showView("fut", true));
 }
 
 document.getElementById("themeBtn").addEventListener("click",()=>{
@@ -528,7 +547,7 @@ function drawOverall(){
   document.getElementById("ovBets").textContent = r.settled;
   const bbc=document.getElementById("bbCount"); if(bbc) bbc.textContent = r.pend ? `${r.settled} · ${r.pend} pending` : `${r.settled} bets`;
 }
-function init(){ buildCum(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
+function init(){ buildCum(); drawCategory(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
 /* ================= FUTURES ================= */
 let FUT = null;
 const fxHost = {"House":{i:"JH",t:"#0c0c0d"},"Dabbundo":{i:"AD",t:"#c99a2e"},"Raheem":{i:"RP",t:"#e4032b"},
@@ -540,13 +559,52 @@ const fxTabsBySport = {
   "College Football": [["wt","Win Totals"],["pf","Playoff Props"],["ls","Longshots"]]
 };
 function fxTabsFor(sport){ return fxTabsBySport[sport] || fxTabsBySport["Football"]; }
+
+/* Team lockups. NFL: data team = mascot, value = [city, color] (city on top).
+   CFB: data team = school, value = [mascot, color] (school on top). Colors are
+   readable-on-both-themes approximations of each team's primary. */
+const nflTeam = {
+  "Bills":["Buffalo","#2a72d4"],"Dolphins":["Miami","#109eaa"],"Patriots":["New England","#5a86c9"],"Jets":["New York","#1f9c63"],
+  "Ravens":["Baltimore","#8a6fd6"],"Bengals":["Cincinnati","#f4632a"],"Browns":["Cleveland","#b06a3b"],"Steelers":["Pittsburgh","#aa8921"],
+  "Texans":["Houston","#cf3d55"],"Jaguars":["Jacksonville","#18a0ad"],"Colts":["Indianapolis","#3d7fe0"],"Titans":["Tennessee","#4896d4"],
+  "Broncos":["Denver","#f4600f"],"Chiefs":["Kansas City","#e23a52"],"Raiders":["Las Vegas","#8a9095"],"Chargers":["Los Angeles","#259cc9"],
+  "Cowboys":["Dallas","#4f7fce"],"Giants":["New York","#3369cf"],"Eagles":["Philadelphia","#1c8a7c"],"Commanders":["Washington","#b3603f"],
+  "Bears":["Chicago","#d0692f"],"Lions":["Detroit","#4a9ad1"],"Packers":["Green Bay","#3f9a56"],"Vikings":["Minnesota","#7d5cc6"],
+  "Falcons":["Atlanta","#e23a52"],"Panthers":["Carolina","#2599c9"],"Saints":["New Orleans","#ae8f3b"],"Buccaneers":["Tampa Bay","#d24437"],
+  "Cardinals":["Arizona","#e0445d"],"Rams":["Los Angeles","#3f7fe0"],"49ers":["San Francisco","#cf4453"],"Seahawks":["Seattle","#559f3b"]
+};
+const cfbTeam = {
+  "Ohio State":["Buckeyes","#e0402f"],"Oregon":["Ducks","#1f9c63"],"Indiana":["Hoosiers","#c0392b"],"USC":["Trojans","#aa8921"],
+  "Michigan":["Wolverines","#3d7fe0"],"Penn State":["Nittany Lions","#4f7fce"],"Washington":["Huskies","#8a6fd6"],
+  "Minnesota":["Golden Gophers","#c9532b"],"Iowa":["Hawkeyes","#b38318"],"Illinois":["Fighting Illini","#e0632a"],"Wisconsin":["Badgers","#cf3d55"],
+  "UCLA":["Bruins","#2599c9"],"Nebraska":["Cornhuskers","#e0402f"],"Northwestern":["Wildcats","#8a6fd6"],"Maryland":["Terrapins","#d24437"],
+  "Rutgers":["Scarlet Knights","#d0402f"],"Michigan State":["Spartans","#1f9c63"],"Purdue":["Boilermakers","#aa8921"],"Miami":["Hurricanes","#f0632a"],
+  "SMU":["Mustangs","#cf3d55"],"Louisville":["Cardinals","#d0402f"],"Clemson":["Tigers","#f4632a"],"Pittsburgh":["Panthers","#b38318"],
+  "Virginia":["Cavaliers","#4f7fce"],"Georgia Tech":["Yellow Jackets","#aa8921"],"Virginia Tech":["Hokies","#a0693b"],"NC State":["Wolfpack","#d0402f"],
+  "Cal":["Golden Bears","#3d7fe0"],"Florida State":["Seminoles","#b8603f"],"Duke":["Blue Devils","#4f7fce"],"Wake Forest":["Demon Deacons","#ae8f3b"],
+  "Syracuse":["Orange","#f4632a"],"North Carolina":["Tar Heels","#4b96d4"],"Stanford":["Cardinal","#d0402f"],"Boston College":["Eagles","#a83744"]
+};
+function fxTeamMap(){ return fxState.sport==="College Football" ? cfbTeam : nflTeam; }
+/* Stacked lockup for the Win Totals board: city/school in ink on top, team name in team color below. */
+function fxTeamLabel(team){
+  const m=fxTeamMap()[team];
+  if(!m) return '<div class="fxteam">'+team+'</div>';
+  const cfb=fxState.sport==="College Football";
+  const top=cfb?team:m[0], bottom=cfb?m[0]:team;
+  return '<div class="fxteam stacked"><span class="fxcity">'+top+'</span><span class="fxmascot" style="color:'+m[1]+'">'+bottom+'</span></div>';
+}
+/* Flat full name (plain ink) for Division Winners etc.: "Buffalo Bills" / "Ohio State Buckeyes". */
+function fxTeamFull(team){
+  const m=fxTeamMap()[team];
+  if(!m) return team;
+  return fxState.sport==="College Football" ? (team+" "+m[0]) : (m[0]+" "+team);
+}
 const fxBoardCap = 6;
 const fxState = {sport:"Football", tab:"wt", div:"all", exp:{}, boardExp:{}, built:false};
 
 function fmtWhen(iso){ if(!iso) return "\u2014"; const d=new Date(iso); if(isNaN(d)) return iso;
   return d.toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})+' ET'; }
-function fxTint(h){ return (fxHost[h]||{t:"#5b5b60"}).t; }
-function fxAv(h){ const x=fxHost[h]||{i:(h||"?").slice(0,2).toUpperCase(),t:"#5b5b60"}; return '<span class="fxav" style="background:'+x.t+'">'+x.i+'</span>'; }
+function fxAv(h){ const x=fxHost[h]||{i:(h||"?").slice(0,2).toUpperCase(),t:"#5b5b60"}; return '<span class="fxav" title="'+h+'" style="background:'+x.t+'">'+x.i+'</span>'; }
 function fxEmpty(){ return '<div class="fxcap">Nothing logged here yet.</div>'; }
 
 function fxDivsFor(sp){
@@ -560,18 +618,17 @@ function fxBoard(sp, div){
   const teams=(sp.win_totals||{})[div]; if(!teams||!teams.length) return "";
   const rows=teams.map(t=>{
     const picks=t.picks.map(p=>{
-      const dot='<span class="fxdot" style="background:'+fxTint(p.host)+'"></span>';
-      if(p.side==="pass") return '<div class="fxpc"><div class="fxph">'+dot+p.host+'</div><div class="fxpk pass">Pass</div></div>';
+      if(p.side==="pass") return '<div class="fxpc"><div class="fxph">'+fxAv(p.host)+'</div><div class="fxpk pass">Pass</div></div>';
       const bt=p.alt?'<span class="bt">Alt</span>':'';
       const live=p.odds.live?p.odds.live:'soon';
-      return '<div class="fxpc"><div class="fxph">'+dot+p.host+bt+'</div>'+
+      return '<div class="fxpc"><div class="fxph">'+fxAv(p.host)+bt+'</div>'+
         '<div class="fxpk '+(p.side==='over'?'o':'u')+'">'+p.selection+'</div>'+
         '<div class="fxog"><span class="l">Odds</span><span class="l">Live Odds</span>'+
         '<span class="vv num">'+(p.odds.bet||'\u2014')+'</span><span class="vv soon num">'+live+'</span></div></div>';
     }).join("");
     const bd = t.consensus==="family" ? '<span class="fxbadge fam">Family Play</span>'
              : t.consensus==="split" ? '<span class="fxbadge spl">Split</span>' : '';
-    return '<div class="fxbrow"><div class="fxteam">'+t.team+'</div>'+
+    return '<div class="fxbrow">'+fxTeamLabel(t.team)+
       '<div class="fxouw"><span class="ou">O/U</span><span class="ln num">'+t.line+'</span></div>'+
       '<div>'+bd+'</div><div class="fxpicks">'+picks+'</div></div>';
   }).join("");
@@ -583,7 +640,7 @@ function fxBoard(sp, div){
 
 function fxDw(sp, div){
   const list=(sp.division_winners||{})[div]; if(!list||!list.length) return "";
-  const rows=list.map(r=>'<div class="fxr fxgdw">'+fxAv(r.host)+'<span class="fxbname">'+r.team+'</span>'+
+  const rows=list.map(r=>'<div class="fxr fxgdw">'+fxAv(r.host)+'<span class="fxbname">'+fxTeamFull(r.team)+'</span>'+
     '<span class="fxoval num">'+r.odds.bet+'</span><span class="fxlval num">'+(r.odds.live||'soon')+'</span></div>').join("");
   return '<div class="fxdboard" data-div="'+div+'"><div class="fxdtitle">'+div+'</div>'+
     '<div class="fxboard"><div class="fxthead fxgdw"><span></span><span>To Win Division</span><span>Odds</span><span>Live Odds</span></div>'+rows+'</div></div>';

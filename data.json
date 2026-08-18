@@ -1,7 +1,7 @@
 {
   "meta": {
     "generated": "2026-08-17T23:16+00:00",
-    "range": "8/7\u20138/17",
+    "range": "8/7–8/17",
     "count": 22,
     "source": "wiseguys_tracker.xlsx"
   },
@@ -193,8 +193,8 @@
       "sport": "MLB",
       "bet": "Mets ML",
       "odds": "-111",
-      "result": "Pending",
-      "net": null
+      "result": "W",
+      "net": 0.9
     },
     {
       "date": "8/17",
@@ -203,8 +203,8 @@
       "sport": "MLB",
       "bet": "White Sox/Cubs Under 8.5",
       "odds": "-114",
-      "result": "Pending",
-      "net": null
+      "result": "L",
+      "net": -1.0
     },
     {
       "date": "8/17",
@@ -213,8 +213,8 @@
       "sport": "MLB",
       "bet": "Rockies ML",
       "odds": "+235",
-      "result": "Pending",
-      "net": null
+      "result": "L",
+      "net": -1.0
     },
     {
       "date": "8/17",
@@ -223,8 +223,8 @@
       "sport": "MLB",
       "bet": "Phillies -1.5 (run line)",
       "odds": "-118",
-      "result": "Pending",
-      "net": null
+      "result": "L",
+      "net": -1.0
     }
   ],
   "futures": {
@@ -915,7 +915,7 @@
           },
           {
             "host": "Dabbundo",
-            "bet": "Denzel Boston \u2014 Offensive ROY",
+            "bet": "Denzel Boston — Offensive ROY",
             "bet_type": "Award",
             "division": "AFC North",
             "odds": {
@@ -926,7 +926,7 @@
           },
           {
             "host": "Tate",
-            "bet": "Denzel Boston \u2014 Most Rookie Rec Yds",
+            "bet": "Denzel Boston — Most Rookie Rec Yds",
             "bet_type": "Player Prop",
             "division": "AFC North",
             "odds": {
@@ -937,7 +937,7 @@
           },
           {
             "host": "Dabbundo",
-            "bet": "Nico Collins \u2014 Offensive POY",
+            "bet": "Nico Collins — Offensive POY",
             "bet_type": "Award",
             "division": "AFC South",
             "odds": {
@@ -992,7 +992,7 @@
           },
           {
             "host": "Raheem",
-            "bet": "Joe Brady \u2014 Coach of the Year",
+            "bet": "Joe Brady — Coach of the Year",
             "bet_type": "Award",
             "division": "AFC East",
             "odds": {
@@ -2159,7 +2159,7 @@
         "longshots": [
           {
             "host": "Tate",
-            "bet": "Julian Sayin \u2014 Heisman",
+            "bet": "Julian Sayin — Heisman",
             "bet_type": "Heisman Winner",
             "division": "Big Ten",
             "odds": {
@@ -2170,7 +2170,7 @@
           },
           {
             "host": "Sal",
-            "bet": "Dante Moore \u2014 Heisman",
+            "bet": "Dante Moore — Heisman",
             "bet_type": "Heisman Winner",
             "division": "Big Ten",
             "odds": {
@@ -2181,7 +2181,7 @@
           },
           {
             "host": "Sal",
-            "bet": "Jeremiah Smith \u2014 Heisman",
+            "bet": "Jeremiah Smith — Heisman",
             "bet_type": "Heisman Winner",
             "division": "Big Ten",
             "odds": {
@@ -2192,7 +2192,7 @@
           },
           {
             "host": "Tate",
-            "bet": "Darian Mensah \u2014 Heisman",
+            "bet": "Darian Mensah — Heisman",
             "bet_type": "Heisman Winner",
             "division": "ACC",
             "odds": {
@@ -2203,7 +2203,7 @@
           },
           {
             "host": "Sal",
-            "bet": "Malachi Toney \u2014 Heisman",
+            "bet": "Malachi Toney — Heisman",
             "bet_type": "Heisman Winner",
             "division": "ACC",
             "odds": {
