@@ -223,6 +223,62 @@
   #view-futures .fxexpand,#view-futures .fxbexpand{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer}
   @media(max-width:820px){#view-futures .fx-strip{grid-template-columns:repeat(2,1fr)}}
 
+
+  /* ---------- host profile modal ---------- */
+  .hrow .av[data-host]{cursor:pointer;transition:box-shadow .12s,transform .12s}
+  .hrow .av[data-host]:hover{box-shadow:0 0 0 2px var(--paper),0 0 0 4px currentColor;transform:translateY(-1px)}
+  .fxav[data-fx]{cursor:pointer}
+  .hm-overlay{position:fixed;inset:0;background:rgba(8,8,10,.5);backdrop-filter:blur(2px);
+    z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .18s}
+  .hm-overlay.on{opacity:1;pointer-events:auto}
+  .hm-sheet{width:100%;max-width:480px;max-height:92vh;overflow:auto;background:var(--paper);
+    border:1px solid var(--line);border-bottom:none;border-radius:18px 18px 0 0;box-shadow:0 -8px 40px -12px rgba(0,0,0,.5);
+    padding:8px 18px 26px;transform:translateY(24px);transition:transform .22s cubic-bezier(.2,.8,.2,1);position:relative}
+  .hm-overlay.on .hm-sheet{transform:translateY(0)}
+  .hm-grab{width:36px;height:4px;border-radius:999px;background:var(--line);margin:6px auto 12px}
+  .hm-x{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);font-size:13px;cursor:pointer;display:grid;place-items:center;z-index:2}
+  .hm-x:hover{color:var(--ink)}
+  .hm-head{display:flex;align-items:center;gap:13px;margin-bottom:15px;padding-right:34px}
+  .hm-av{width:52px;height:52px;font-size:17px}
+  .hm-name{font-family:Anton;font-size:22px;letter-spacing:.01em;line-height:1}
+  .hm-sub{display:block;color:var(--muted);font-weight:600;font-size:12px;margin-top:4px}
+  .hm-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+  .hm-kpi{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:11px 12px}
+  .hm-kpi .l{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .hm-kpi .v{font-family:Anton;font-size:23px;line-height:1.05;margin-top:3px}
+  .hm-toggle{display:inline-flex;width:100%;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);margin-bottom:13px}
+  .hm-toggle button{flex:1;border:none;background:transparent;color:var(--muted);font-size:12.5px;font-weight:700;
+    letter-spacing:.02em;padding:9px 0;cursor:pointer;border-right:1px solid var(--line)}
+  .hm-toggle button:last-child{border-right:none}
+  .hm-toggle button.on{background:var(--ink);color:var(--paper)}
+  .hm-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .hm-fgrp{display:flex;flex-wrap:wrap;gap:6px}
+  .hm-chip{font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid var(--line);
+    color:var(--muted);background:var(--card);cursor:pointer;white-space:nowrap}
+  .hm-chip.on{color:var(--ink);background:var(--chip);border-color:transparent}
+  .hm-fsep{width:1px;align-self:stretch;background:var(--line);margin:2px 3px}
+  .hm-list{display:flex;flex-direction:column}
+  .hm-row{display:flex;align-items:center;gap:10px;padding:11px 2px;border-bottom:1px solid var(--line)}
+  .hm-row:last-child{border-bottom:none}
+  .hm-rl{min-width:0;flex:1}
+  .hm-bet{font-size:13px;font-weight:700;line-height:1.25}
+  .hm-meta{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:3px;letter-spacing:.02em}
+  .hm-rr{display:flex;align-items:center;gap:9px;flex:none}
+  .hm-odds{font-size:12px;color:var(--muted);font-weight:700}
+  .hm-u{font-size:13px;font-weight:800;min-width:44px;text-align:right}
+  .hm-empty{font-size:12.5px;color:var(--muted);background:var(--sub);border:1px solid var(--line);border-radius:9px;padding:12px 13px;margin-top:2px}
+  .hm-expand{margin-top:12px;text-align:center}
+  .hm-expand button{border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:11.5px;font-weight:700;
+    padding:7px 14px;border-radius:8px;cursor:pointer}
+  .hm-expand button:hover{color:var(--ink);border-color:var(--muted)}
+  .badge.b-Lean{color:var(--muted);background:var(--chip)}
+  @media(min-width:560px){
+    .hm-overlay{align-items:center}
+    .hm-sheet{border-radius:16px;border-bottom:1px solid var(--line);transform:translateY(0) scale(.97)}
+    .hm-overlay.on .hm-sheet{transform:translateY(0) scale(1)}
+    .hm-grab{display:none}
+  }
 </style>
 </head>
 <body>
@@ -450,7 +506,7 @@ function drawHosts(){
     return `<div class="hrow" data-i="${i}">
         <span class="chev">▶</span>
         <div class="who"><span class="rank num">${i+1}</span>
-          <span class="av" style="background:${h.tint}">${h.init}</span>
+          <span class="av" data-host="${h.name}" style="background:${h.tint}">${h.init}</span>
           <span class="nm">${h.name}<small>${h.str} · ${h.wp}% win${h.pend?` · ${h.pend} pending`:""}</small></span></div>
         <div class="track"><div class="mid"></div>${bar}</div>
         <div class="stat"><b class="num">${h.str}</b> record<br><b class="num">${h.wp}%</b> win rate${h.pend?`<br><b class="num" style="color:var(--pend)">${h.pend}</b> pending`:""}</div>
@@ -547,7 +603,7 @@ function drawOverall(){
   document.getElementById("ovBets").textContent = r.settled;
   const bbc=document.getElementById("bbCount"); if(bbc) bbc.textContent = r.pend ? `${r.settled} · ${r.pend} pending` : `${r.settled} bets`;
 }
-function init(){ buildCum(); drawCategory(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); }
+function init(){ buildCum(); drawCategory(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); initHostModal(); }
 /* ================= FUTURES ================= */
 let FUT = null;
 const fxHost = {"House":{i:"JH",t:"#0c0c0d"},"Dabbundo":{i:"AD",t:"#c99a2e"},"Raheem":{i:"RP",t:"#e4032b"},
@@ -604,7 +660,7 @@ const fxState = {sport:"Football", tab:"wt", div:"all", exp:{}, boardExp:{}, bui
 
 function fmtWhen(iso){ if(!iso) return "\u2014"; const d=new Date(iso); if(isNaN(d)) return iso;
   return d.toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})+' ET'; }
-function fxAv(h){ const x=fxHost[h]||{i:(h||"?").slice(0,2).toUpperCase(),t:"#5b5b60"}; return '<span class="fxav" title="'+h+'" style="background:'+x.t+'">'+x.i+'</span>'; }
+function fxAv(h){ const x=fxHost[h]||{i:(h||"?").slice(0,2).toUpperCase(),t:"#5b5b60"}; const dh=(typeof FXNAME!=="undefined"&&FXNAME[h])?' data-fx="'+h+'"':""; return '<span class="fxav" title="'+h+'"'+dh+' style="background:'+x.t+'">'+x.i+'</span>'; }
 function fxEmpty(){ return '<div class="fxcap">Nothing logged here yet.</div>'; }
 
 function fxDivsFor(sp){
@@ -770,6 +826,133 @@ document.getElementById("tabFut").addEventListener("click", ()=>showView("fut", 
 window.addEventListener("popstate", ()=>showView(pathToView(), false));
 
 
+/* ================= HOST PROFILE MODAL ================= */
+const NAMEFX = {"Raheem Palmer":"Raheem","Joe House":"House","Cousin Sal":"Sal","Anthony Dabbundo":"Dabbundo","Tate Frazier":"Tate"};
+const FXNAME = {"Raheem":"Raheem Palmer","House":"Joe House","Sal":"Cousin Sal","Dabbundo":"Anthony Dabbundo","Tate":"Tate Frazier"};
+const HM_byName = Object.fromEntries(hostMeta.map(h=>[h.name,h]));
+const hmState = {host:null, view:"bets", sport:"All", type:"All", expanded:false};
+const _hm = id => document.getElementById(id);
+// badge rule: settled result wins; otherwise anything WITH odds is Pending, only odds-less picks are Leans
+const fstat = (res,odds) => (res==="W"||res==="L"||res==="P") ? res : (odds ? "Pending" : "Lean");
+
+function hostFutures(fx){
+  const out=[]; const sports=(FUT&&FUT.sports)||{};
+  for(const [sport,cats] of Object.entries(sports)){
+    for(const [k,val] of Object.entries(cats)){
+      if(k==="summary"||val==null) continue;
+      if(k==="win_totals"){
+        for(const [div,teams] of Object.entries(val)) (teams||[]).forEach(t=>{
+          (t.picks||[]).forEach(p=>{ if(p.host===fx && p.side!=="pass")
+            out.push({sport,cat:"Win Total",label:`${t.team} ${p.selection}`,odds:(p.odds&&p.odds.bet)||"",status:fstat(null,(p.odds&&p.odds.bet)),div}); });
+        });
+      } else if(k==="division_winners"){
+        for(const [div,arr] of Object.entries(val)) (arr||[]).forEach(r=>{ if(r.host===fx)
+          out.push({sport,cat:"Division",label:`${r.team} to win ${div}`,odds:(r.odds&&r.odds.bet)||"",status:fstat(r.result,(r.odds&&r.odds.bet)),div}); });
+      } else if(k==="player_props"){
+        for(const [div,arr] of Object.entries(val)) (arr||[]).forEach(r=>{ if(r.host===fx)
+          out.push({sport,cat:"Player Prop",label:r.bet,odds:(r.odds&&r.odds.bet)||"",status:fstat(r.result,(r.odds&&r.odds.bet)),div}); });
+      } else if(k==="playoff_props"){
+        const entries = Array.isArray(val) ? val.map(x=>["",x]) : Object.entries(val).flatMap(([div,a])=>(a||[]).map(x=>[div,x]));
+        entries.forEach(([div,r])=>{ if(r&&r.host===fx)
+          out.push({sport,cat:"Playoff Prop",label:r.bet,odds:(r.odds&&r.odds.bet)||"",status:fstat(r.result,(r.odds&&r.odds.bet)),div}); });
+      } else if(k==="longshots"){
+        (val||[]).forEach(r=>{ if(r.host===fx)
+          out.push({sport,cat:"Longshot",label:r.bet,odds:(r.odds&&r.odds.bet)||"",status:fstat(r.result,(r.odds&&r.odds.bet)),div:r.division||""}); });
+      }
+    }
+  }
+  return out;
+}
+
+function openHostModal(name){
+  const h = HM_byName[name]; if(!h) return;
+  hmState.host=h; hmState.view="bets"; hmState.sport="All"; hmState.type="All"; hmState.expanded=false;
+  const list = bets.filter(b=>b.host===h.name);
+  const r = recOf(list);
+  _hm("hmAv").style.background=h.tint; _hm("hmAv").textContent=h.init;
+  _hm("hmName").textContent=h.name;
+  _hm("hmSub").textContent=`${r.str} · ${r.wp}% win rate${r.pend?` · ${r.pend} pending`:""}`;
+  _hm("hmKpis").innerHTML=`
+    <div class="hm-kpi"><div class="l">Net Units</div><div class="v ${r.net>=0?'pos':'neg'} num">${f2(r.net)}</div></div>
+    <div class="hm-kpi"><div class="l">Record</div><div class="v num">${r.str}</div></div>
+    <div class="hm-kpi"><div class="l">Win Rate</div><div class="v num">${r.wp}%</div></div>`;
+  makeChart(_hm("hmChart"), hostSeries(list), {h:150, padL:34, padT:16, color:(r.net>=0?"var(--pos)":"var(--neg)")});
+  document.querySelectorAll("#hmToggle button").forEach(b=>b.classList.toggle("on", b.dataset.v==="bets"));
+  renderModalBody();
+  _hm("hmOverlay").classList.add("on"); document.body.style.overflow="hidden";
+}
+function closeHostModal(){ _hm("hmOverlay").classList.remove("on"); document.body.style.overflow=""; }
+
+function renderModalBody(){
+  const h=hmState.host; let items, sports, subcats, subKey, subLabel;
+  if(hmState.view==="bets"){
+    items=bets.filter(b=>b.host===h.name).slice().reverse();
+    sports=[...new Set(items.map(b=>b.sport))];
+    subcats=typeOrder.filter(t=>items.some(b=>b.type===t));
+    subKey="type"; subLabel="Types";
+  } else {
+    items=hostFutures(NAMEFX[h.name]);
+    sports=[...new Set(items.map(i=>i.sport))];
+    subcats=[...new Set(items.map(i=>i.cat))];
+    subKey="cat"; subLabel="Bet Types";
+  }
+  const chip=(txt,active,attr)=>`<button class="hm-chip ${active?'on':''}" ${attr}>${txt}</button>`;
+  let fil=`<div class="hm-fgrp">${chip("All sports",hmState.sport==="All",'data-sport="All"')}`
+        + sports.map(s=>chip(s,hmState.sport===s,`data-sport="${s}"`)).join("")+`</div>`;
+  if(subcats.length){
+    fil+=`<div class="hm-fsep"></div><div class="hm-fgrp">${chip("All "+subLabel.toLowerCase(),hmState.type==="All",'data-type="All"')}`
+        + subcats.map(s=>chip(s,hmState.type===s,`data-type="${s}"`)).join("")+`</div>`;
+  }
+  _hm("hmFilters").innerHTML=fil;
+  _hm("hmFilters").querySelectorAll("[data-sport]").forEach(b=>b.onclick=()=>{hmState.sport=b.dataset.sport;hmState.expanded=false;renderModalBody();});
+  _hm("hmFilters").querySelectorAll("[data-type]").forEach(b=>b.onclick=()=>{hmState.type=b.dataset.type;hmState.expanded=false;renderModalBody();});
+  let filtered=items.filter(it=>(hmState.sport==="All"||it.sport===hmState.sport)&&(hmState.type==="All"||it[subKey]===hmState.type));
+  const total=filtered.length;
+  const shown=hmState.expanded?filtered:filtered.slice(0,5);
+  _hm("hmList").innerHTML = total===0
+    ? `<div class="hm-empty">Nothing logged here yet${hmState.view==="futures"?" — this host has no futures on the board.":"."}</div>`
+    : shown.map(it=> hmState.view==="bets" ? hmBetRow(it) : hmFutRow(it)).join("");
+  _hm("hmExpand").innerHTML = total>5
+    ? `<button id="hmExpandBtn">${hmState.expanded?"Show less":`Show all ${total}`}</button>` : "";
+  const eb=_hm("hmExpandBtn"); if(eb) eb.onclick=()=>{hmState.expanded=!hmState.expanded;renderModalBody();};
+}
+
+function hmBetRow(b){
+  const pend=b.result==="Pending";
+  const badge=pend?`<span class="badge b-Pending">Pending</span>`:`<span class="badge b-${b.result}">${b.result}</span>`;
+  const u=pend?`<span class="hm-u pushc">—</span>`
+             :`<span class="hm-u ${b.net>0?'pos':b.net<0?'neg':'pushc'} num">${b.result==='P'?'0.00':f2(b.net)}</span>`;
+  return `<div class="hm-row"><div class="hm-rl">
+      <div class="hm-bet">${b.bet}</div><div class="hm-meta">${b.date} · ${b.sport} · ${b.type}</div></div>
+    <div class="hm-rr"><span class="hm-odds num">${b.odds}</span>${badge}${u}</div></div>`;
+}
+function hmFutRow(it){
+  const cls = it.status==="W"?"b-W":it.status==="L"?"b-L":it.status==="P"?"b-P":it.status==="Lean"?"b-Lean":"b-Pending";
+  const meta=[it.sport,it.div,it.cat].filter(Boolean).join(" · ");
+  return `<div class="hm-row"><div class="hm-rl">
+      <div class="hm-bet">${it.label}</div><div class="hm-meta">${meta}</div></div>
+    <div class="hm-rr"><span class="hm-odds num">${it.odds||""}</span><span class="badge ${cls}">${it.status}</span></div></div>`;
+}
+
+function initHostModal(){
+  document.querySelectorAll("#hmToggle button").forEach(b=>b.onclick=()=>{
+    hmState.view=b.dataset.v; hmState.sport="All"; hmState.type="All"; hmState.expanded=false;
+    document.querySelectorAll("#hmToggle button").forEach(x=>x.classList.toggle("on",x===b));
+    renderModalBody();
+  });
+  const cl=_hm("hmClose"); if(cl) cl.onclick=closeHostModal;
+  const ov=_hm("hmOverlay"); if(ov) ov.onclick=e=>{ if(e.target===ov) closeHostModal(); };
+}
+// capture-phase so an avatar tap opens the modal WITHOUT triggering the row's inline expand
+document.addEventListener("click", e=>{
+  const av=e.target.closest(".hrow .av[data-host]");
+  if(av){ e.stopPropagation(); openHostModal(av.dataset.host); return; }
+  const fav=e.target.closest(".fxav[data-fx]");
+  if(fav){ e.stopPropagation(); const full=FXNAME[fav.dataset.fx]; if(full) openHostModal(full); }
+}, true);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeHostModal(); });
+/* =============== END HOST PROFILE MODAL =============== */
+
 fetch('/data.json', {cache:'no-store'})
   .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(data=>{
@@ -793,5 +976,17 @@ fetch('/data.json', {cache:'no-store'})
   });
 window.addEventListener("resize", ()=>{ if(cum.length) drawHero(); });
 </script>
+<div class="hm-overlay" id="hmOverlay"><div class="hm-sheet" id="hmSheet" role="dialog" aria-modal="true" aria-label="Host profile">
+  <div class="hm-grab"></div>
+  <button class="hm-x" id="hmClose" aria-label="Close">&#10005;</button>
+  <div class="hm-head"><span class="av hm-av" id="hmAv"></span>
+    <div><div class="hm-name" id="hmName"></div><small class="hm-sub" id="hmSub"></small></div></div>
+  <div class="hm-kpis" id="hmKpis"></div>
+  <div class="sparkwrap"><div class="subhd">Cumulative units (Best Bets)</div><div class="chartbox" id="hmChart"></div></div>
+  <div class="hm-toggle" id="hmToggle"><button data-v="bets" class="on">Best Bets</button><button data-v="futures">Futures</button></div>
+  <div class="hm-filters" id="hmFilters"></div>
+  <div class="hm-list" id="hmList"></div>
+  <div class="hm-expand" id="hmExpand"></div>
+</div></div>
 </body>
 </html>
