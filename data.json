@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-08-17T23:16+00:00",
-    "range": "8/7–8/17",
-    "count": 22,
+    "generated": "2026-08-21T16:26+00:00",
+    "range": "8/7–8/20",
+    "count": 26,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -225,6 +225,46 @@
       "odds": "-118",
       "result": "L",
       "net": -1.0
+    },
+    {
+      "date": "8/20",
+      "host": "Anthony Dabbundo",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "Michael McGreevy Over 4.5 strikeouts",
+      "odds": "-110",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/20",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Yankees/Orioles Over 7.5",
+      "odds": "-110",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/20",
+      "host": "Raheem Palmer",
+      "type": "Total",
+      "sport": "NFL",
+      "bet": "Raiders/Texans Over 37.5",
+      "odds": "-110",
+      "result": "W",
+      "net": 0.91
+    },
+    {
+      "date": "8/20",
+      "host": "Cousin Sal",
+      "type": "Spread",
+      "sport": "WNBA",
+      "bet": "Wings +2.5",
+      "odds": "-110",
+      "result": "W",
+      "net": 0.91
     }
   ],
   "futures": {
