@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-08-21T16:26+00:00",
-    "range": "8/7–8/20",
-    "count": 26,
+    "generated": "2026-08-25T04:22+00:00",
+    "range": "8/7\u20138/21",
+    "count": 30,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -265,6 +265,46 @@
       "odds": "-110",
       "result": "W",
       "net": 0.91
+    },
+    {
+      "date": "8/21",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Mariners ML",
+      "odds": "+100",
+      "result": "W",
+      "net": 1.0
+    },
+    {
+      "date": "8/21",
+      "host": "Joe House",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rays ML",
+      "odds": "+116",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/21",
+      "host": "Raheem Palmer",
+      "type": "Spread",
+      "sport": "NFL",
+      "bet": "Jaguars +1.5",
+      "odds": "-114",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/21",
+      "host": "Cousin Sal",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Braves/Brewers Over 6",
+      "odds": "-116",
+      "result": "L",
+      "net": -1.0
     }
   ],
   "futures": {
@@ -756,6 +796,168 @@
               ],
               "consensus": "split"
             }
+          ],
+          "AFC West": [
+            {
+              "team": "Chiefs",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 9.5",
+                  "odds": {
+                    "bet": "-135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 9.5",
+                  "odds": {
+                    "bet": "-135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Chargers",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Broncos",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Raiders",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "-140",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 5.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            }
           ]
         },
         "division_winners": {
@@ -845,6 +1047,35 @@
               },
               "result": "Pending"
             }
+          ],
+          "AFC West": [
+            {
+              "host": "Raheem",
+              "team": "Broncos",
+              "odds": {
+                "bet": "+210",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "team": "Broncos",
+              "odds": {
+                "bet": "+210",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "team": "Chargers",
+              "odds": {
+                "bet": "+190",
+                "live": null
+              },
+              "result": "Pending"
+            }
           ]
         },
         "player_props": {
@@ -916,6 +1147,35 @@
               },
               "result": "Pending"
             }
+          ],
+          "AFC West": [
+            {
+              "host": "Raheem",
+              "bet": "Brock Bowers over 85.5 receptions",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "bet": "Patrick Mahomes under 25.5 passing TDs",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "bet": "Quentin Johnston over 5.5 receiving TDs",
+              "odds": {
+                "bet": "-128",
+                "live": null
+              },
+              "result": "Pending"
+            }
           ]
         },
         "playoff_props": [],
@@ -955,7 +1215,7 @@
           },
           {
             "host": "Dabbundo",
-            "bet": "Denzel Boston — Offensive ROY",
+            "bet": "Denzel Boston \u2014 Offensive ROY",
             "bet_type": "Award",
             "division": "AFC North",
             "odds": {
@@ -966,7 +1226,7 @@
           },
           {
             "host": "Tate",
-            "bet": "Denzel Boston — Most Rookie Rec Yds",
+            "bet": "Denzel Boston \u2014 Most Rookie Rec Yds",
             "bet_type": "Player Prop",
             "division": "AFC North",
             "odds": {
@@ -977,7 +1237,7 @@
           },
           {
             "host": "Dabbundo",
-            "bet": "Nico Collins — Offensive POY",
+            "bet": "Nico Collins \u2014 Offensive POY",
             "bet_type": "Award",
             "division": "AFC South",
             "odds": {
@@ -1032,7 +1292,7 @@
           },
           {
             "host": "Raheem",
-            "bet": "Joe Brady — Coach of the Year",
+            "bet": "Joe Brady \u2014 Coach of the Year",
             "bet_type": "Award",
             "division": "AFC East",
             "odds": {
@@ -1076,10 +1336,10 @@
           }
         ],
         "summary": {
-          "open_predictions": 54,
-          "staked_plays": 31,
+          "open_predictions": 65,
+          "staked_plays": 37,
           "longshots": 14,
-          "max_units": 46.6
+          "max_units": 61.3
         }
       },
       "College Football": {
@@ -2199,7 +2459,7 @@
         "longshots": [
           {
             "host": "Tate",
-            "bet": "Julian Sayin — Heisman",
+            "bet": "Julian Sayin \u2014 Heisman",
             "bet_type": "Heisman Winner",
             "division": "Big Ten",
             "odds": {
@@ -2210,7 +2470,7 @@
           },
           {
             "host": "Sal",
-            "bet": "Dante Moore — Heisman",
+            "bet": "Dante Moore \u2014 Heisman",
             "bet_type": "Heisman Winner",
             "division": "Big Ten",
             "odds": {
@@ -2221,7 +2481,7 @@
           },
           {
             "host": "Sal",
-            "bet": "Jeremiah Smith — Heisman",
+            "bet": "Jeremiah Smith \u2014 Heisman",
             "bet_type": "Heisman Winner",
             "division": "Big Ten",
             "odds": {
@@ -2232,7 +2492,7 @@
           },
           {
             "host": "Tate",
-            "bet": "Darian Mensah — Heisman",
+            "bet": "Darian Mensah \u2014 Heisman",
             "bet_type": "Heisman Winner",
             "division": "ACC",
             "odds": {
@@ -2243,7 +2503,7 @@
           },
           {
             "host": "Sal",
-            "bet": "Malachi Toney — Heisman",
+            "bet": "Malachi Toney \u2014 Heisman",
             "bet_type": "Heisman Winner",
             "division": "ACC",
             "odds": {
