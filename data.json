@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-08-25T04:22+00:00",
-    "range": "8/7\u20138/21",
-    "count": 30,
+    "generated": "2026-08-27T03:20+00:00",
+    "range": "8/7\u20138/24",
+    "count": 34,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -305,6 +305,46 @@
       "odds": "-116",
       "result": "L",
       "net": -1.0
+    },
+    {
+      "date": "8/24",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Phillies/Mariners Under 6.5",
+      "odds": "+105",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/24",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rays ML",
+      "odds": "-128",
+      "result": "W",
+      "net": 0.78
+    },
+    {
+      "date": "8/24",
+      "host": "Joe House",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Pirates/Padres Under 7.5",
+      "odds": "-115",
+      "result": "W",
+      "net": 0.87
+    },
+    {
+      "date": "8/24",
+      "host": "Cousin Sal",
+      "type": "Spread",
+      "sport": "WNBA",
+      "bet": "Sparks +9.5",
+      "odds": "-115",
+      "result": "W",
+      "net": 0.87
     }
   ],
   "futures": {
@@ -958,6 +998,168 @@
               ],
               "consensus": "family"
             }
+          ],
+          "NFC East": [
+            {
+              "team": "Eagles",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "-135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 10.5",
+                  "odds": {
+                    "bet": "-135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Cowboys",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "+160",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": true
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 9.5",
+                  "odds": {
+                    "bet": "-110",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Giants",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Commanders",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": true
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            }
           ]
         },
         "division_winners": {
@@ -1076,6 +1278,35 @@
               },
               "result": "Pending"
             }
+          ],
+          "NFC East": [
+            {
+              "host": "House",
+              "team": "Eagles",
+              "odds": {
+                "bet": "+130",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "team": "Cowboys",
+              "odds": {
+                "bet": "+175",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "team": "Cowboys",
+              "odds": {
+                "bet": "+175",
+                "live": null
+              },
+              "result": "Pending"
+            }
           ]
         },
         "player_props": {
@@ -1172,6 +1403,35 @@
               "bet": "Quentin Johnston over 5.5 receiving TDs",
               "odds": {
                 "bet": "-128",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "NFC East": [
+            {
+              "host": "Dabbundo",
+              "bet": "Saquon Barkley over 7.5 TDs",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "bet": "Jayden Daniels over 3,200.5 pass yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "bet": "Saquon Barkley over 1,050.5 rushing yds",
+              "odds": {
+                "bet": "-114",
                 "live": null
               },
               "result": "Pending"
@@ -1333,13 +1593,35 @@
               "live": null
             },
             "result": "Pending"
+          },
+          {
+            "host": "House",
+            "bet": "Cowboys 12+ wins",
+            "bet_type": "Alternate Win Total",
+            "division": "NFC East",
+            "odds": {
+              "bet": "+270",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Dabbundo",
+            "bet": "Jayden Daniels \u2014 Comeback POY",
+            "bet_type": "Award",
+            "division": "NFC East",
+            "odds": {
+              "bet": "+700",
+              "live": null
+            },
+            "result": "Pending"
           }
         ],
         "summary": {
-          "open_predictions": 65,
-          "staked_plays": 37,
-          "longshots": 14,
-          "max_units": 61.3
+          "open_predictions": 80,
+          "staked_plays": 45,
+          "longshots": 16,
+          "max_units": 74.7
         }
       },
       "College Football": {
@@ -2518,6 +2800,31 @@
           "staked_plays": 14,
           "longshots": 5,
           "max_units": 27.5
+        }
+      },
+      "MLB": {
+        "win_totals": {},
+        "division_winners": {},
+        "player_props": {},
+        "playoff_props": [],
+        "longshots": [
+          {
+            "host": "Dabbundo",
+            "bet": "Mariners to win division",
+            "bet_type": "Division Winner",
+            "division": "AL West",
+            "odds": {
+              "bet": "+210",
+              "live": null
+            },
+            "result": "Pending"
+          }
+        ],
+        "summary": {
+          "open_predictions": 1,
+          "staked_plays": 1,
+          "longshots": 1,
+          "max_units": 0
         }
       }
     }
