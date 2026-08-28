@@ -105,6 +105,15 @@
 
   .panel{display:none;background:var(--sub);border-bottom:1px solid var(--line);padding:16px 18px 20px}
   .panel.open{display:block}
+  /* ---------- Locks tab ---------- */
+  .chart-soon{min-height:200px;display:grid;place-items:center;background:var(--sub);border:1px dashed var(--line);border-radius:12px;margin-top:8px}
+  .chart-soon .soon-overlay{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--faint);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .chart-soon .soon-overlay small{font-weight:600;font-size:11px;letter-spacing:0;text-transform:none;color:var(--muted)}
+  .lk-empty{padding:26px 20px;text-align:center;color:var(--muted);font-size:13px}
+  .lkprev{display:flex;align-items:center;gap:8px;min-width:0}
+  .lkprev .lktxt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12.5px;color:var(--ink)}
+  .lkprev .odds{color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px}
+  .lkprev .more{color:var(--faint);font-weight:700;font-size:11px;white-space:nowrap}
   .panelhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
   .panelhd .t{font-weight:800;font-size:13px}
   .sparkwrap{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:10px 12px;margin-bottom:14px}
@@ -295,6 +304,7 @@
     <div class="nav">
       <button class="tab on" id="tabBest">Best Bets</button>
       <button class="tab" id="tabFut">Futures</button>
+      <button class="tab" id="tabLocks">Locks</button>
     </div>
     <div class="spacer"></div>
     <button class="theme" id="themeBtn">◐ Dark</button>
@@ -361,6 +371,27 @@
     <div id="fx-sections"></div>
   </div>
 
+  <div id="view-locks" style="display:none">
+    <div class="sec"><span class="eyebrow">Mortal Locks &middot; one lock per host</span><span class="rule"></span></div>
+    <section class="hero">
+      <div class="left">
+        <div class="reclab">Mortal-locks record</div>
+        <div class="rec num" style="color:var(--faint)">&mdash;</div>
+        <div class="kpis">
+          <div class="kpi"><div class="v num" style="color:var(--faint)">&mdash;</div><div class="l">Net units</div></div>
+          <div class="kpi"><div class="v num" style="color:var(--faint)">&mdash;</div><div class="l">Win rate</div></div>
+          <div class="kpi"><div class="v num" id="lkCount">&mdash;</div><div class="l">Locks</div></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="charttitle"><span class="eyebrow">Cumulative units</span></div>
+        <div class="chartbox chart-soon" id="locksChart"><div class="soon-overlay">Coming soon<small>Locks settle later this season</small></div></div>
+      </div>
+    </section>
+    <div class="sec"><span class="eyebrow">By host &middot; tap to expand</span><span class="rule"></span></div>
+    <section class="hosts" id="lockHosts"></section>
+  </div>
+
   <footer>
     <span id="lastUpdated">Last updated: &mdash;</span>
     <span id="dataflag">Data: August 2026</span>
@@ -371,6 +402,7 @@
 <script>
 /* ---------- full bet data (real, from the tracker) ---------- */
 let bets = [];            // loaded from data.json (built from wiseguys_tracker.xlsx)
+let locks = [];           // mortal locks (from the Locks tab); grades settle later in the season
 const hostMeta = [
   {name:"Raheem Palmer",    init:"RP", tint:"#e4032b"},
   {name:"Joe House",        init:"JH", tint:"#0c0c0d"},
@@ -590,6 +622,42 @@ function drawCategory(){
   row.addEventListener("click",()=>{ row.classList.toggle("open");
     document.getElementById("catBestList").classList.toggle("open"); });
   document.getElementById("catFut").addEventListener("click", ()=>showView("fut", true));
+}
+
+/* ---------- locks (mortal locks) ---------- */
+let locksBuilt=false;
+function drawLocks(){
+  const cnt=document.getElementById("lkCount");
+  if(cnt) cnt.textContent = locks.length ? locks.length : "\u2014";
+  const el=document.getElementById("lockHosts");
+  if(!locks.length){
+    el.innerHTML=`<div class="lk-empty">Mortal locks will appear here once the first week's picks are logged.</div>`;
+    return;
+  }
+  const anySettled=locks.some(b=>b.result==="W"||b.result==="L"||b.result==="P");
+  let rows=hostMeta.map(h=>{const list=locks.filter(b=>b.host===h.name);return {...h,list,...recOf(list)};})
+                   .filter(r=>r.list.length>0);
+  if(anySettled) rows.sort((a,b)=>b.net-a.net);
+  el.innerHTML=rows.map((h,i)=>{
+    const first=h.list[h.list.length-1];
+    const more=h.list.length>1?`<span class="more">+${h.list.length-1} more</span>`:"";
+    const prev=`<div class="lkprev"><span class="badge b-Pending">Lock</span><span class="lktxt">${first.bet}</span><span class="odds num">${first.odds}</span>${more}</div>`;
+    return `<div class="hrow lkrow" data-li="${i}">
+        <span class="chev">\u25b6</span>
+        <div class="who">
+          <span class="av" data-host="${h.name}" style="background:${h.tint}">${h.init}</span>
+          <span class="nm">${h.name}<small>${h.list.length} lock${h.list.length>1?'s':''}${h.pend?` \u00b7 ${h.pend} pending`:""}</small></span></div>
+        ${prev}
+        <div class="stat"><b class="num">${h.str}</b> record${h.pend?`<br><b class="num" style="color:var(--pend)">${h.pend}</b> pending`:""}</div>
+      </div>
+      <div class="panel" data-lp="${i}"><div class="pt" id="pt-lk-${i}"></div></div>`;
+  }).join("");
+  rows.forEach((h,i)=>pagedTable(document.getElementById("pt-lk-"+i), h.list.slice().reverse(), false));
+  document.querySelectorAll(".lkrow").forEach(row=>row.addEventListener("click",()=>{
+    const i=row.dataset.li;
+    row.classList.toggle("open");
+    document.querySelector(`.panel[data-lp="${i}"]`).classList.toggle("open");
+  }));
 }
 
 document.getElementById("themeBtn").addEventListener("click",()=>{
@@ -815,21 +883,28 @@ function fxInit(){
 }
 
 function pathToView(){
-  return location.pathname.replace(/\/+$/,"").toLowerCase().endsWith("/futures") ? "fut" : "bb";
+  const p = location.pathname.replace(/\/+$/,"").toLowerCase();
+  if(p.endsWith("/futures")) return "fut";
+  if(p.endsWith("/locks")) return "locks";
+  return "bb";
 }
 function showView(v, updateURL){
-  document.getElementById("view-bb").style.display = v==="fut"?"none":"";
+  document.getElementById("view-bb").style.display = v==="bb"?"":"none";
   document.getElementById("view-futures").style.display = v==="fut"?"":"none";
-  document.getElementById("tabBest").classList.toggle("on", v!=="fut");
+  document.getElementById("view-locks").style.display = v==="locks"?"":"none";
+  document.getElementById("tabBest").classList.toggle("on", v==="bb");
   document.getElementById("tabFut").classList.toggle("on", v==="fut");
+  document.getElementById("tabLocks").classList.toggle("on", v==="locks");
   if(v==="fut" && !fxState.built){ fxInit(); fxState.built=true; }
+  if(v==="locks" && !locksBuilt){ drawLocks(); locksBuilt=true; }
   if(updateURL){
-    const path = v==="fut" ? "/futures" : "/best-bets";
+    const path = v==="fut" ? "/futures" : v==="locks" ? "/locks" : "/best-bets";
     if(location.pathname !== path) history.pushState({v}, "", path);
   }
 }
 document.getElementById("tabBest").addEventListener("click", ()=>showView("bb", true));
 document.getElementById("tabFut").addEventListener("click", ()=>showView("fut", true));
+document.getElementById("tabLocks").addEventListener("click", ()=>showView("locks", true));
 window.addEventListener("popstate", ()=>showView(pathToView(), false));
 
 
@@ -964,6 +1039,7 @@ fetch('/data.json', {cache:'no-store'})
   .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
   .then(data=>{
     bets = data.bets || [];
+    locks = data.locks || [];
     FUT = data.futures || null;
     if(data.meta && data.meta.range){
       document.getElementById('dataflag').textContent = 'Data: ' + data.meta.range;
