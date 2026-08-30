@@ -142,7 +142,8 @@ def main():
         "bets": bets,
         "futures": {"sports": futures},
     }
-    OUT.write_text(json.dumps(data, indent=2))
+    OUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+                   encoding="utf-8")
     fp = {s: d["summary"] for s, d in futures.items()}
     print(f"Wrote {OUT.name}: {len(bets)} best bets; futures per sport:")
     for s, sm in fp.items():
