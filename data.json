@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-08-28T02:56+00:00",
-    "range": "8/7–8/27",
-    "count": 41,
+    "generated": "2026-08-29T22:36+00:00",
+    "range": "8/7–8/28",
+    "count": 44,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -415,6 +415,36 @@
       "odds": "-110",
       "result": "L",
       "net": -1.0
+    },
+    {
+      "date": "8/28",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Brewers ML",
+      "odds": "-194",
+      "result": "W",
+      "net": 0.52
+    },
+    {
+      "date": "8/28",
+      "host": "Raheem Palmer",
+      "type": "Total",
+      "sport": "NFL",
+      "bet": "Vikings/Broncos Under 37.5",
+      "odds": "-110",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/28",
+      "host": "Tate Frazier",
+      "type": "Spread",
+      "sport": "WNBA",
+      "bet": "Fever -17.5",
+      "odds": "-104",
+      "result": "W",
+      "net": 0.96
     }
   ],
   "futures": {
