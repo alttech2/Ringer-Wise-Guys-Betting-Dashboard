@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-08-29T22:36+00:00",
-    "range": "8/7–8/28",
-    "count": 44,
+    "generated": "2026-09-01T17:33+00:00",
+    "range": "8/7–8/31",
+    "count": 48,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -445,6 +445,46 @@
       "odds": "-104",
       "result": "W",
       "net": 0.96
+    },
+    {
+      "date": "8/31",
+      "host": "Anthony Dabbundo",
+      "type": "Parlay",
+      "sport": "Tennis",
+      "bet": "Alcaraz to win + both players to win a set",
+      "odds": "+140",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/31",
+      "host": "Joe House",
+      "type": "Parlay",
+      "sport": "MLB",
+      "bet": "Braves ML + Rangers ML",
+      "odds": "+139",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/31",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rays ML",
+      "odds": "-168",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "8/31",
+      "host": "Cousin Sal",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Brewers ML",
+      "odds": "-104",
+      "result": "L",
+      "net": -1.0
     }
   ],
   "futures": {
@@ -1422,6 +1462,168 @@
               ],
               "consensus": "family"
             }
+          ],
+          "NFC South": [
+            {
+              "team": "Buccaneers",
+              "line": "8.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 8.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Saints",
+              "line": "7.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-125",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-125",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 7.5",
+                  "odds": {
+                    "bet": "+105",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            },
+            {
+              "team": "Falcons",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 7.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": true
+                },
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Panthers",
+              "line": "6.5",
+              "picks": [
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 6.5",
+                  "odds": {
+                    "bet": "+115",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "-125",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 6.5",
+                  "odds": {
+                    "bet": "-125",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "split"
+            }
           ]
         },
         "division_winners": {
@@ -1598,6 +1800,35 @@
               },
               "result": "Pending"
             }
+          ],
+          "NFC South": [
+            {
+              "host": "Dabbundo",
+              "team": "Buccaneers",
+              "odds": {
+                "bet": "+175",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "team": "Buccaneers",
+              "odds": {
+                "bet": "+175",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "team": "Buccaneers",
+              "odds": {
+                "bet": "+175",
+                "live": null
+              },
+              "result": "Pending"
+            }
           ]
         },
         "player_props": {
@@ -1721,6 +1952,44 @@
             {
               "host": "House",
               "bet": "Saquon Barkley over 1,050.5 rushing yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "NFC South": [
+            {
+              "host": "Dabbundo",
+              "bet": "Bryce Young under 2,875.5 pass yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "House",
+              "bet": "Baker Mayfield over 3,500.5 pass yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Sal",
+              "bet": "Bijan Robinson over 1,150.5 rushing yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "bet": "Bucky Irving over 825.5 rushing yds",
               "odds": {
                 "bet": "-114",
                 "live": null
@@ -1909,10 +2178,10 @@
           }
         ],
         "summary": {
-          "open_predictions": 89,
-          "staked_plays": 48,
+          "open_predictions": 101,
+          "staked_plays": 55,
           "longshots": 16,
-          "max_units": 85.1
+          "max_units": 100.9
         }
       },
       "College Football": {
