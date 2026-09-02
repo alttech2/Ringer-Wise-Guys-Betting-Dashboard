@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-09-01T17:33+00:00",
-    "range": "8/7–8/31",
-    "count": 48,
+    "generated": "2026-09-02T18:53+00:00",
+    "range": "8/7–9/1",
+    "count": 51,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -483,6 +483,36 @@
       "sport": "MLB",
       "bet": "Brewers ML",
       "odds": "-104",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/1",
+      "host": "Anthony Dabbundo",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "AJ Smith-Shawver Under 4.5 Ks",
+      "odds": "-150",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/1",
+      "host": "Cousin Sal",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Cardinals ML",
+      "odds": "+150",
+      "result": "W",
+      "net": 1.5
+    },
+    {
+      "date": "9/1",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Giants ML",
+      "odds": "+142",
       "result": "L",
       "net": -1.0
     }
