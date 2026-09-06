@@ -71,7 +71,9 @@
   .kpi .l{font-size:10.5px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-top:4px}
   .pos{color:var(--pos)} .neg{color:var(--neg)} .pushc{color:var(--push)}
   .hero .right{position:relative;padding:16px 18px 8px}
-  .hero .charttitle{position:absolute;top:16px;left:20px}
+  .hero .charttitle{position:absolute;top:16px;left:20px;display:flex;align-items:baseline;gap:9px}
+  .scoperet{font-size:13px;font-weight:800;letter-spacing:0;text-transform:none;white-space:nowrap}
+  .sr-rec{color:var(--muted);font-weight:700;margin-right:5px}
   .hero .htf{position:absolute;top:13px;right:16px;z-index:2}
   svg{display:block;width:100%;height:auto}
   .axlab{fill:var(--faint);font-size:11px;font-family:Inter}
@@ -119,6 +121,7 @@
   .sparkwrap{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:10px 12px;margin-bottom:14px}
   .subhd{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:2px 0 6px}
   .hm-sparkhd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .hm-sparkl{display:flex;align-items:baseline;gap:8px;min-width:0}
 
   table.bt{width:100%;border-collapse:collapse}
   .bt th{text-align:left;color:var(--muted);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 8px;border-bottom:1px solid var(--line)}
@@ -171,6 +174,12 @@
   }
   /* phones: keep the Best Bets / Futures tabs, drop them onto their own full-width row */
   @media(max-width:560px){
+    /* hero chart header: unpin the title + W/M/Y so they share one row instead of overlapping */
+    .hero .right{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;padding:12px 14px 8px}
+    .hero .charttitle{position:static;flex:1 1 auto;flex-wrap:wrap;gap:4px 8px}
+    .hero .htf{position:static;flex:0 0 auto}
+    .hero .chartbox{flex:1 1 100%}
+    .hm-sparkhd{flex-wrap:wrap}
     .bar{height:auto;flex-wrap:wrap;gap:8px 12px;padding:9px 0}
     .nav{order:3;width:100%;margin-left:0;gap:6px}
     .nav .tab{flex:1;text-align:center;padding:8px 12px}
@@ -326,7 +335,7 @@
       </div>
     </div>
     <div class="right">
-      <div class="charttitle"><span class="eyebrow" id="heroChartLab">Cumulative units</span></div>
+      <div class="charttitle"><span class="eyebrow" id="heroChartLab">Cumulative units</span><span class="scoperet num" id="heroChartRet"></span></div>
       <div class="htf"><div class="seg" id="heroSeg"></div></div>
       <div class="chartbox" id="heroChart"></div>
     </div>
@@ -557,6 +566,12 @@ function scopeSeries(list, scope){
   settledIn(list, scope).forEach(b=>{ r+=b.net; s.push({date:b.date, v:+r.toFixed(2)}); });
   return s;
 }
+function scopeRec(list, scope){ return recOf(settledIn(list, scope)); }
+/* record + net return for the active window, e.g. "3-1-0  +1.50u" */
+function scopeStatHTML(list, scope){
+  const r=scopeRec(list, scope);
+  return `<span class="sr-rec">${r.str} ·</span><span class="${r.net>=0?'pos':'neg'}">${f2(r.net)}u</span>`;
+}
 function pickScope(counts, want){
   if(want && counts[want]>0) return want;
   return counts.M>0 ? "M" : counts.Y>0 ? "Y" : counts.W>0 ? "W" : "Y";
@@ -588,6 +603,8 @@ function drawHero(){
   if(seg){ seg.innerHTML=segMarkup(counts, heroScope); wireSeg(seg, counts, s=>{ heroScope=s; drawHero(); }); }
   const lab=document.getElementById("heroChartLab");
   if(lab) lab.textContent="Cumulative units · "+SCOPE_NOTE[heroScope];
+  const ret=document.getElementById("heroChartRet");
+  if(ret) ret.innerHTML=scopeStatHTML(bets, heroScope);
   makeChart(document.getElementById("heroChart"), scopeSeries(bets, heroScope), {h:260, padL:40, padT:30, color:"var(--brand)"});
 }
 
@@ -612,7 +629,7 @@ function drawHosts(){
         <div class="stat"><b class="num">${h.str}</b> record<br><b class="num">${h.wp}%</b> win rate${h.pend?`<br><b class="num" style="color:var(--pend)">${h.pend}</b> pending`:""}</div>
       </div>
       <div class="panel" data-p="${i}">
-        <div class="panelhd"><span class="t">${h.name} · ${h.str} · <span class="${h.net>=0?'pos':'neg'}">${f2(h.net)}u</span></span>
+        <div class="panelhd"><span class="t" id="panelhd-${i}"></span>
           <div class="seg" data-hseg="${i}"></div></div>
         <div class="sparkwrap"><div class="subhd" id="sparklab-${i}">Cumulative units</div><div class="chartbox spark" id="spark-${i}"></div></div>
         <div class="subhd">${sportOrder.filter(s=>h.list.some(b=>b.sport===s)).join(" · ")} · ${h.list.length} bets</div>
@@ -629,8 +646,11 @@ function drawHosts(){
       if(seg){ seg.innerHTML=segMarkup(counts, hostScope[i]); wireSeg(seg, counts, s=>{ hostScope[i]=s; paint(); }); }
       const lab=document.getElementById("sparklab-"+i);
       if(lab) lab.textContent="Cumulative units · "+SCOPE_NOTE[hostScope[i]];
+      const hd=document.getElementById("panelhd-"+i);
+      if(hd) hd.innerHTML=`${h.name} · ${scopeStatHTML(h.list, hostScope[i])}`;
+      const wnet=scopeRec(h.list, hostScope[i]).net;   // colour follows the window, not all-time
       makeChart(document.getElementById("spark-"+i), scopeSeries(h.list, hostScope[i]),
-                {h:150, padL:34, padT:16, color:(h.net>=0?"var(--pos)":"var(--neg)")});
+                {h:150, padL:34, padT:16, color:(wnet>=0?"var(--pos)":"var(--neg)")});
     };
     paint();
   });
@@ -1044,15 +1064,18 @@ function closeHostModal(){ _hm("hmOverlay").classList.remove("on"); document.bod
 
 function drawHmChart(){
   const h=hmState.host; if(!h) return;
-  const list=bets.filter(b=>b.host===h.name), r=recOf(list);
+  const list=bets.filter(b=>b.host===h.name);
   const counts=scopeCounts(list);
   hmState.scope=pickScope(counts, hmState.scope);
   const seg=_hm("hmSeg");
   if(seg){ seg.innerHTML=segMarkup(counts, hmState.scope); wireSeg(seg, counts, s=>{ hmState.scope=s; drawHmChart(); }); }
   const lab=_hm("hmChartLab");
-  if(lab) lab.textContent="Best Bets cumulative · "+SCOPE_NOTE[hmState.scope];
+  if(lab) lab.textContent="Best Bets · "+SCOPE_NOTE[hmState.scope];
+  const ret=_hm("hmChartRet");
+  if(ret) ret.innerHTML=scopeStatHTML(list, hmState.scope);
+  const wnet=scopeRec(list, hmState.scope).net;   // colour follows the window, not all-time
   makeChart(_hm("hmChart"), scopeSeries(list, hmState.scope),
-            {h:150, padL:34, padT:16, color:(r.net>=0?"var(--pos)":"var(--neg)")});
+            {h:150, padL:34, padT:16, color:(wnet>=0?"var(--pos)":"var(--neg)")});
 }
 
 function renderModalBody(){
@@ -1156,7 +1179,7 @@ window.addEventListener("resize", ()=>{ if(cum.length) drawHero(); });
   <div class="hm-head"><span class="av hm-av" id="hmAv"></span>
     <div><div class="hm-name" id="hmName"></div><small class="hm-sub" id="hmSub"></small></div></div>
   <div class="hm-kpis" id="hmKpis"></div>
-  <div class="sparkwrap"><div class="subhd hm-sparkhd"><span id="hmChartLab">Best Bets cumulative</span><span class="seg" id="hmSeg"></span></div><div class="chartbox" id="hmChart"></div></div>
+  <div class="sparkwrap"><div class="subhd hm-sparkhd"><span class="hm-sparkl"><span id="hmChartLab">Best Bets cumulative</span><span class="scoperet num" id="hmChartRet"></span></span><span class="seg" id="hmSeg"></span></div><div class="chartbox" id="hmChart"></div></div>
   <div class="hm-toggle" id="hmToggle"><button data-v="bets" class="on">Best Bets</button><button data-v="futures">Futures</button></div>
   <div class="hm-filters" id="hmFilters"></div>
   <div class="hm-list" id="hmList"></div>
