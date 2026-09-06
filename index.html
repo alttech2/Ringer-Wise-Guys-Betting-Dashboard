@@ -118,6 +118,7 @@
   .panelhd .t{font-weight:800;font-size:13px}
   .sparkwrap{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:10px 12px;margin-bottom:14px}
   .subhd{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:2px 0 6px}
+  .hm-sparkhd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
 
   table.bt{width:100%;border-collapse:collapse}
   .bt th{text-align:left;color:var(--muted);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 8px;border-bottom:1px solid var(--line)}
@@ -313,7 +314,7 @@
 
 <div class="wrap">
   <div id="view-bb">
-  <div class="sec"><span class="eyebrow">Overall · August 2026</span><span class="rule"></span></div>
+  <div class="sec"><span class="eyebrow" id="ovLabel">Overall</span><span class="rule"></span></div>
   <section class="hero">
     <div class="left">
       <div class="reclab">Wise Guys best-bets record</div>
@@ -325,12 +326,8 @@
       </div>
     </div>
     <div class="right">
-      <div class="charttitle"><span class="eyebrow">Cumulative units</span></div>
-      <div class="htf"><div class="seg">
-        <button class="soff" title="Needs more history">W</button>
-        <button class="son">M</button>
-        <button class="soff" title="Unlocks with 2026 backfill">Y</button>
-      </div></div>
+      <div class="charttitle"><span class="eyebrow" id="heroChartLab">Cumulative units</span></div>
+      <div class="htf"><div class="seg" id="heroSeg"></div></div>
       <div class="chartbox" id="heroChart"></div>
     </div>
   </section>
@@ -403,6 +400,7 @@
 /* ---------- full bet data (real, from the tracker) ---------- */
 let bets = [];            // loaded from data.json (built from wiseguys_tracker.xlsx)
 let locks = [];           // mortal locks (from the Locks tab); grades settle later in the season
+let META = null;          // data.json meta block (generated / range / count)
 const hostMeta = [
   {name:"Raheem Palmer",    init:"RP", tint:"#e4032b"},
   {name:"Joe House",        init:"JH", tint:"#0c0c0d"},
@@ -411,7 +409,7 @@ const hostMeta = [
   {name:"Tate Frazier",     init:"TF", tint:"#2f7fb8"}
 ];
 const typeOrder = ["Moneyline","Parlay","Spread","Total","Prop"];
-const sportOrder = ["MLB","NFL","WNBA","Tennis","NBA","Golf"];
+const sportOrder = ["MLB","NFL","College Football","WNBA","Tennis","NBA","Golf"];
 
 /* ---------- helpers ---------- */
 const f2 = n => (n>=0?"+":"") + n.toFixed(2);
@@ -518,19 +516,83 @@ function makeChart(el, series, opts){
   svg.addEventListener("touchmove",  e=>at(e.touches[0].clientX), {passive:true});
   svg.addEventListener("touchend", off);
 }
-function hostSeries(list){ let r=0; const s=[{date:"",v:0}];
-  list.filter(b=>b.result==="W"||b.result==="L"||b.result==="P").forEach(b=>{ r+=b.net; s.push({date:b.date, v:+r.toFixed(2)}); }); return s; }
+function hostSeries(list){ return scopeSeries(list, "Y"); }
+
+/* ---------- time scopes (W / M / Y) ----------
+   Rolling windows: W = last 7 days, M = last 30 days, Y = all history.
+   Dates in data.json are "M/D" with no year, so the year is inferred from
+   meta.generated (a month later than the reference month rolls back a year). */
+const SCOPE_DAYS  = {W:7, M:30, Y:null};
+const SCOPE_TITLE = {W:"Last 7 days", M:"Last 30 days", Y:"All time"};
+const SCOPE_NOTE  = {W:"last 7 days", M:"last 30 days", Y:"all time"};
+let SCOPE_REF = {y:new Date().getFullYear(), m:new Date().getMonth()+1};
+let SCOPE_ANCHOR = null;
+
+function betDateObj(s){
+  const m=/^(\d{1,2})\/(\d{1,2})$/.exec(String(s||"").trim()); if(!m) return null;
+  const mo=+m[1], da=+m[2];
+  return new Date(mo>SCOPE_REF.m ? SCOPE_REF.y-1 : SCOPE_REF.y, mo-1, da);
+}
+function initScopes(){
+  const gm = /^(\d{4})-(\d{2})/.exec((META && META.generated) || "");
+  if(gm) SCOPE_REF = {y:+gm[1], m:+gm[2]};
+  const today=new Date(); today.setHours(0,0,0,0);
+  let last=null;
+  bets.forEach(b=>{ const d=betDateObj(b.date); if(d && (!last || d>last)) last=d; });
+  SCOPE_ANCHOR = (last && last>today) ? last : today;   // never let future-dated data fall out of every window
+}
+function inScope(dateStr, scope){
+  const days=SCOPE_DAYS[scope]; if(!days) return true;
+  const d=betDateObj(dateStr); if(!d || !SCOPE_ANCHOR) return true;
+  return d >= new Date(SCOPE_ANCHOR.getTime()-(days-1)*86400000);
+}
+function settledIn(list, scope){
+  return list.filter(b=>(b.result==="W"||b.result==="L"||b.result==="P") && inScope(b.date, scope));
+}
+function scopeCounts(list){
+  const c={}; ["W","M","Y"].forEach(k=>{ c[k]=settledIn(list,k).length; }); return c;
+}
+function scopeSeries(list, scope){
+  let r=0; const s=[{date:"",v:0}];
+  settledIn(list, scope).forEach(b=>{ r+=b.net; s.push({date:b.date, v:+r.toFixed(2)}); });
+  return s;
+}
+function pickScope(counts, want){
+  if(want && counts[want]>0) return want;
+  return counts.M>0 ? "M" : counts.Y>0 ? "Y" : counts.W>0 ? "W" : "Y";
+}
+function segMarkup(counts, active){
+  return ["W","M","Y"].map(k=>{
+    const has=counts[k]>0;
+    const cls=!has ? "soff" : (k===active ? "son" : "");
+    const tip=has ? SCOPE_TITLE[k] : "No settled picks in this window";
+    return `<button class="${cls}" data-scope="${k}"${has?"":" disabled"} title="${tip}">${k}</button>`;
+  }).join("");
+}
+function wireSeg(seg, counts, onPick){
+  if(!seg) return;
+  seg.querySelectorAll("button[data-scope]").forEach(b=>b.addEventListener("click", e=>{
+    e.stopPropagation();
+    if(b.disabled || !counts[b.dataset.scope]) return;
+    onPick(b.dataset.scope);
+  }));
+}
 
 /* ---------- hero ---------- */
-let cum=[];
-function buildCum(){ cum=[{date:"",v:0}]; let r=0;
-  bets.filter(b=>b.result==="W"||b.result==="L"||b.result==="P").forEach(b=>{ r+=b.net; cum.push({date:b.date, v:+r.toFixed(2)}); });
-}
+let cum=[], heroScope=null;
+function buildCum(){ cum=scopeSeries(bets,"Y"); }
 function drawHero(){
-  makeChart(document.getElementById("heroChart"), cum, {h:260, padL:40, padT:30, color:"var(--brand)"});
+  const counts=scopeCounts(bets);
+  heroScope=pickScope(counts, heroScope);
+  const seg=document.getElementById("heroSeg");
+  if(seg){ seg.innerHTML=segMarkup(counts, heroScope); wireSeg(seg, counts, s=>{ heroScope=s; drawHero(); }); }
+  const lab=document.getElementById("heroChartLab");
+  if(lab) lab.textContent="Cumulative units · "+SCOPE_NOTE[heroScope];
+  makeChart(document.getElementById("heroChart"), scopeSeries(bets, heroScope), {h:260, padL:40, padT:30, color:"var(--brand)"});
 }
 
 /* ---------- hosts ---------- */
+let hostScope=[];
 function drawHosts(){
   let rows=hostMeta.map(h=>{const list=bets.filter(b=>b.host===h.name);return {...h,list,...recOf(list)};});
   rows=rows.filter(r=>r.list.length>0);
@@ -551,14 +613,27 @@ function drawHosts(){
       </div>
       <div class="panel" data-p="${i}">
         <div class="panelhd"><span class="t">${h.name} · ${h.str} · <span class="${h.net>=0?'pos':'neg'}">${f2(h.net)}u</span></span>
-          <div class="seg"><button class="soff">W</button><button class="son">M</button><button class="soff">Y</button></div></div>
-        <div class="sparkwrap"><div class="subhd">Cumulative units</div><div class="chartbox spark" id="spark-${i}"></div></div>
-        <div class="subhd">MLB · ${h.list.length} bets</div>
+          <div class="seg" data-hseg="${i}"></div></div>
+        <div class="sparkwrap"><div class="subhd" id="sparklab-${i}">Cumulative units</div><div class="chartbox spark" id="spark-${i}"></div></div>
+        <div class="subhd">${sportOrder.filter(s=>h.list.some(b=>b.sport===s)).join(" · ")} · ${h.list.length} bets</div>
         <div class="pt" id="pt-h-${i}"></div>
       </div>`;
   }).join("");
   rows.forEach((h,i)=>pagedTable(document.getElementById("pt-h-"+i), h.list.slice().reverse(), false));
-  rows.forEach((h,i)=>makeChart(document.getElementById("spark-"+i), hostSeries(h.list), {h:150, padL:34, padT:16, color:(h.net>=0?"var(--pos)":"var(--neg)")}));
+  hostScope=[];
+  rows.forEach((h,i)=>{
+    const counts=scopeCounts(h.list);
+    hostScope[i]=pickScope(counts, hostScope[i]);
+    const seg=document.querySelector(`.seg[data-hseg="${i}"]`);
+    const paint=()=>{
+      if(seg){ seg.innerHTML=segMarkup(counts, hostScope[i]); wireSeg(seg, counts, s=>{ hostScope[i]=s; paint(); }); }
+      const lab=document.getElementById("sparklab-"+i);
+      if(lab) lab.textContent="Cumulative units · "+SCOPE_NOTE[hostScope[i]];
+      makeChart(document.getElementById("spark-"+i), scopeSeries(h.list, hostScope[i]),
+                {h:150, padL:34, padT:16, color:(h.net>=0?"var(--pos)":"var(--neg)")});
+    };
+    paint();
+  });
   document.querySelectorAll(".hrow").forEach(row=>row.addEventListener("click",()=>{
     const i=row.dataset.i;
     row.classList.toggle("open");
@@ -676,8 +751,10 @@ function drawOverall(){
   document.getElementById("ovWin").innerHTML = wp + '<span style="font-size:16px">%</span>';
   document.getElementById("ovBets").textContent = r.settled;
   const bbc=document.getElementById("bbCount"); if(bbc) bbc.textContent = r.pend ? `${r.settled} · ${r.pend} pending` : `${r.settled} bets`;
+  const ovl=document.getElementById("ovLabel");
+  if(ovl && META && META.range) ovl.textContent = `Overall · ${META.range}`;
 }
-function init(){ buildCum(); drawCategory(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); initHostModal(); }
+function init(){ initScopes(); buildCum(); drawCategory(); drawOverall(); drawHero(); drawHosts(); drawTypes(); drawSports(); initHostModal(); }
 /* ================= FUTURES ================= */
 let FUT = null;
 const fxHost = {"House":{i:"JH",t:"#0c0c0d"},"Dabbundo":{i:"AD",t:"#c99a2e"},"Raheem":{i:"RP",t:"#e4032b"},
@@ -912,7 +989,7 @@ window.addEventListener("popstate", ()=>showView(pathToView(), false));
 const NAMEFX = {"Raheem Palmer":"Raheem","Joe House":"House","Cousin Sal":"Sal","Anthony Dabbundo":"Dabbundo","Tate Frazier":"Tate"};
 const FXNAME = {"Raheem":"Raheem Palmer","House":"Joe House","Sal":"Cousin Sal","Dabbundo":"Anthony Dabbundo","Tate":"Tate Frazier"};
 const HM_byName = Object.fromEntries(hostMeta.map(h=>[h.name,h]));
-const hmState = {host:null, view:"bets", sport:"All", type:"All", expanded:false};
+const hmState = {host:null, view:"bets", sport:"All", type:"All", expanded:false, scope:null};
 const _hm = id => document.getElementById(id);
 // badge rule: settled result wins; otherwise anything WITH odds is Pending, only odds-less picks are Leans
 const fstat = (res,odds) => (res==="W"||res==="L"||res==="P") ? res : (odds ? "Pending" : "Lean");
@@ -948,7 +1025,7 @@ function hostFutures(fx){
 
 function openHostModal(name){
   const h = HM_byName[name]; if(!h) return;
-  hmState.host=h; hmState.view="bets"; hmState.sport="All"; hmState.type="All"; hmState.expanded=false;
+  hmState.host=h; hmState.view="bets"; hmState.sport="All"; hmState.type="All"; hmState.expanded=false; hmState.scope=null;
   const list = bets.filter(b=>b.host===h.name);
   const r = recOf(list);
   _hm("hmAv").style.background=h.tint; _hm("hmAv").textContent=h.init;
@@ -958,12 +1035,25 @@ function openHostModal(name){
     <div class="hm-kpi"><div class="l">Net Units</div><div class="v ${r.net>=0?'pos':'neg'} num">${f2(r.net)}</div></div>
     <div class="hm-kpi"><div class="l">Record</div><div class="v num">${r.str}</div></div>
     <div class="hm-kpi"><div class="l">Win Rate</div><div class="v num">${r.wp}%</div></div>`;
-  makeChart(_hm("hmChart"), hostSeries(list), {h:150, padL:34, padT:16, color:(r.net>=0?"var(--pos)":"var(--neg)")});
+  drawHmChart();
   document.querySelectorAll("#hmToggle button").forEach(b=>b.classList.toggle("on", b.dataset.v==="bets"));
   renderModalBody();
   _hm("hmOverlay").classList.add("on"); document.body.style.overflow="hidden";
 }
 function closeHostModal(){ _hm("hmOverlay").classList.remove("on"); document.body.style.overflow=""; }
+
+function drawHmChart(){
+  const h=hmState.host; if(!h) return;
+  const list=bets.filter(b=>b.host===h.name), r=recOf(list);
+  const counts=scopeCounts(list);
+  hmState.scope=pickScope(counts, hmState.scope);
+  const seg=_hm("hmSeg");
+  if(seg){ seg.innerHTML=segMarkup(counts, hmState.scope); wireSeg(seg, counts, s=>{ hmState.scope=s; drawHmChart(); }); }
+  const lab=_hm("hmChartLab");
+  if(lab) lab.textContent="Best Bets cumulative · "+SCOPE_NOTE[hmState.scope];
+  makeChart(_hm("hmChart"), scopeSeries(list, hmState.scope),
+            {h:150, padL:34, padT:16, color:(r.net>=0?"var(--pos)":"var(--neg)")});
+}
 
 function renderModalBody(){
   const h=hmState.host; let items, sports, subcats, subKey, subLabel;
@@ -1041,6 +1131,7 @@ fetch('/data.json', {cache:'no-store'})
     bets = data.bets || [];
     locks = data.locks || [];
     FUT = data.futures || null;
+    META = data.meta || null;
     if(data.meta && data.meta.range){
       document.getElementById('dataflag').textContent = 'Data: ' + data.meta.range;
     }
@@ -1065,7 +1156,7 @@ window.addEventListener("resize", ()=>{ if(cum.length) drawHero(); });
   <div class="hm-head"><span class="av hm-av" id="hmAv"></span>
     <div><div class="hm-name" id="hmName"></div><small class="hm-sub" id="hmSub"></small></div></div>
   <div class="hm-kpis" id="hmKpis"></div>
-  <div class="sparkwrap"><div class="subhd">Cumulative units (Best Bets)</div><div class="chartbox" id="hmChart"></div></div>
+  <div class="sparkwrap"><div class="subhd hm-sparkhd"><span id="hmChartLab">Best Bets cumulative</span><span class="seg" id="hmSeg"></span></div><div class="chartbox" id="hmChart"></div></div>
   <div class="hm-toggle" id="hmToggle"><button data-v="bets" class="on">Best Bets</button><button data-v="futures">Futures</button></div>
   <div class="hm-filters" id="hmFilters"></div>
   <div class="hm-list" id="hmList"></div>
