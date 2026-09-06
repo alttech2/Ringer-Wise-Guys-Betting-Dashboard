@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-09-02T18:53+00:00",
-    "range": "8/7–9/1",
-    "count": 51,
+    "generated": "2026-09-06T20:30+00:00",
+    "range": "8/7–9/4",
+    "count": 57,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -515,6 +515,66 @@
       "odds": "+142",
       "result": "L",
       "net": -1.0
+    },
+    {
+      "date": "9/3",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Red Sox ML",
+      "odds": "-126",
+      "result": "W",
+      "net": 0.79
+    },
+    {
+      "date": "9/3",
+      "host": "Joe House",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Royals F5 ML",
+      "odds": "-112",
+      "result": "W",
+      "net": 0.89
+    },
+    {
+      "date": "9/3",
+      "host": "Anthony Dabbundo",
+      "type": "Prop",
+      "sport": "Tennis",
+      "bet": "Learner Tien to win in 4 or 5 sets",
+      "odds": "+135",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/3",
+      "host": "Cousin Sal",
+      "type": "Spread",
+      "sport": "College Football",
+      "bet": "Arkansas-Pine Bluff +46.5",
+      "odds": "+200",
+      "result": "W",
+      "net": 2.0
+    },
+    {
+      "date": "9/4",
+      "host": "Tate Frazier",
+      "type": "Spread",
+      "sport": "College Football",
+      "bet": "Fresno State +21.5",
+      "odds": "-110",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/4",
+      "host": "Cousin Sal",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Padres ML",
+      "odds": "+112",
+      "result": "W",
+      "net": 1.12
     }
   ],
   "futures": {
