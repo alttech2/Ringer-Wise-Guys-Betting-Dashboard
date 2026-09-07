@@ -206,9 +206,11 @@
   #view-futures .fxbub.on .bd{background:var(--paper)}
   #view-futures .fxdboard{margin-bottom:14px}
   #view-futures .fxdtitle{font-family:Anton;font-size:14px;text-transform:uppercase;letter-spacing:.02em;color:var(--muted);margin-bottom:7px}
+  #view-futures .fxdtitle .oddshint{display:none;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:10px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--faint);margin-left:8px}
+  #view-futures .fxav[data-fx]{cursor:pointer}
   #view-futures .fxboard{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
-  #view-futures .fxbhead{display:grid;grid-template-columns:.9fr 62px 104px 2.5fr;gap:10px;padding:9px 13px;background:var(--sub);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
-  #view-futures .fxbrow{display:grid;grid-template-columns:.9fr 62px 104px 2.5fr;gap:10px;padding:12px 13px;border-top:1px solid var(--line);align-items:center}
+  #view-futures .fxbhead{display:grid;grid-template-columns:64px minmax(0,.95fr) 104px 2.4fr;gap:10px;padding:9px 13px;background:var(--sub);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+  #view-futures .fxbrow{display:grid;grid-template-columns:64px minmax(0,.95fr) 104px 2.4fr;gap:10px;padding:12px 13px;border-top:1px solid var(--line);align-items:center}
   #view-futures .fxteam{font-weight:700;font-size:14px}
   #view-futures .fxteam.stacked{display:flex;flex-direction:column;line-height:1.15}
   #view-futures .fxteam .fxcity{font-size:14px;font-weight:700;color:var(--ink)}
@@ -219,13 +221,15 @@
   #view-futures .fxbadge{font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
   #view-futures .fxbadge.fam{color:var(--pos);background:var(--posbg)}
   #view-futures .fxbadge.spl{color:var(--push);background:var(--pushbg)}
-  #view-futures .fxpicks{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
-  #view-futures .fxpc{flex:1;min-width:100px;text-align:center;display:flex;flex-direction:column}
-  #view-futures .fxph{font-size:11px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:3px}
-  #view-futures .fxph .bt{font-size:8.5px;font-weight:800;color:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:0 4px}
-  #view-futures .fxpk{font-size:13px;font-weight:800;margin-bottom:4px}
+  #view-futures .fxpicks{display:grid;gap:8px;align-items:start}
+  #view-futures .fxpc{min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+  #view-futures .fxpc.miss{opacity:.34}
+  #view-futures .fxph{font-size:11px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:5px}
+  #view-futures .fxpk .bt{font-size:8.5px;font-weight:800;color:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:0 4px;margin-left:5px;vertical-align:1px}
+  #view-futures .fxpk{font-size:13px;font-weight:800;line-height:1.35;white-space:nowrap}
   #view-futures .fxpk.o{color:var(--pos)} #view-futures .fxpk.u{color:var(--neg)}
-  #view-futures .fxpk.pass{color:var(--faint);font-size:15px;margin:auto 0}
+  #view-futures .fxpk.pass,#view-futures .fxpk.none{color:var(--faint);font-weight:700}
+  #view-futures .fxconsw{min-width:0}
   #view-futures .fxog{display:grid;grid-template-columns:1fr 1fr;gap:2px 4px}
   #view-futures .fxog .l{font-size:11px;color:var(--faint)}
   #view-futures .fxog .vv{font-size:11px;font-weight:800}
@@ -247,6 +251,21 @@
   #view-futures .fxexw{text-align:center;margin-top:9px}
   #view-futures .fxexpand,#view-futures .fxbexpand{font-size:11.5px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer}
   @media(max-width:820px){#view-futures .fx-strip{grid-template-columns:repeat(2,1fr)}}
+  /* phones: the win-totals board stacks into one card per team — line + team +
+     consensus on a header line, host leans wrapping underneath. No sideways scroll. */
+  @media(max-width:760px){
+    #view-futures .fxbhead{display:none}
+    #view-futures .fxdtitle .oddshint{display:inline}   /* the header carried this hint on desktop */
+    #view-futures .fxbrow{grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding:13px;align-items:center}
+    #view-futures .fxouw{grid-column:1;grid-row:1}
+    #view-futures .fxteam{grid-column:2;grid-row:1;min-width:0}
+    #view-futures .fxconsw{grid-column:3;grid-row:1;justify-self:end}
+    #view-futures .fxpicks{grid-column:1/-1;grid-row:2;grid-template-columns:repeat(auto-fit,minmax(72px,1fr))!important;
+      margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);gap:10px 6px}
+    #view-futures .fxpk{font-size:12px;white-space:normal}
+    #view-futures .fxteam .fxmascot{font-size:16px}
+    #view-futures .fxouw .ln{font-size:19px}
+  }
 
 
   /* ---------- host profile modal ---------- */
@@ -842,27 +861,48 @@ function fxDivsFor(sp){
     (sp.playoff_props||[]).some(l=>l.division===d) || (sp.longshots||[]).some(l=>l.division===d));
 }
 
+/* Win-totals board: Line | Team | Consensus | one fixed column per host.
+   Cells carry the lean only \u2014 prices live in the host modal (tap an avatar). */
+const FX_HOST_ORDER = ["Raheem","House","Sal","Dabbundo","Tate","Group"];
+function fxBoardHosts(teams){
+  const seen=new Set();
+  teams.forEach(t=>(t.picks||[]).forEach(p=>seen.add(p.host)));
+  const known=FX_HOST_ORDER.filter(h=>seen.has(h));
+  const rest=[...seen].filter(h=>FX_HOST_ORDER.indexOf(h)<0).sort();
+  return known.concat(rest);
+}
+function fxPickCell(host, picks){
+  const av='<div class="fxph">'+fxAv(host)+'</div>';
+  if(!picks.length)                       // host is on this board but not this team
+    return '<div class="fxpc miss">'+av+'<div class="fxpk none">&mdash;</div></div>';
+  if(picks.every(p=>p.side==="pass"))
+    return '<div class="fxpc">'+av+'<div class="fxpk pass">Pass</div></div>';
+  const lines=picks.filter(p=>p.side!=="pass").map(p=>
+    '<div class="fxpk '+(p.side==='over'?'o':'u')+'">'+p.selection+
+    (p.alt?'<span class="bt">Alt</span>':'')+'</div>').join("");
+  return '<div class="fxpc">'+av+lines+'</div>';
+}
 function fxBoard(sp, div){
   const teams=(sp.win_totals||{})[div]; if(!teams||!teams.length) return "";
+  const hosts=fxBoardHosts(teams);
+  // with only 1–2 hosts (e.g. the CFB boards) an equal-fr split strands the cells
+  // at the far edges of a wide track — cap the grid so they stay grouped left
+  const cap = hosts.length<=2 ? ';max-width:'+(hosts.length*170)+'px' : '';
+  const gcols=' style="grid-template-columns:repeat('+hosts.length+',minmax(0,1fr))'+cap+'"';
   const rows=teams.map(t=>{
-    const picks=t.picks.map(p=>{
-      if(p.side==="pass") return '<div class="fxpc"><div class="fxph">'+fxAv(p.host)+'</div><div class="fxpk pass">Pass</div></div>';
-      const bt=p.alt?'<span class="bt">Alt</span>':'';
-      const live=p.odds.live?p.odds.live:'soon';
-      return '<div class="fxpc"><div class="fxph">'+fxAv(p.host)+bt+'</div>'+
-        '<div class="fxpk '+(p.side==='over'?'o':'u')+'">'+p.selection+'</div>'+
-        '<div class="fxog"><span class="l">Odds</span><span class="l">Live Odds</span>'+
-        '<span class="vv num">'+(p.odds.bet||'\u2014')+'</span><span class="vv soon num">'+live+'</span></div></div>';
-    }).join("");
+    const cells=hosts.map(h=>fxPickCell(h,(t.picks||[]).filter(p=>p.host===h))).join("");
     const bd = t.consensus==="family" ? '<span class="fxbadge fam">Family Play</span>'
              : t.consensus==="split" ? '<span class="fxbadge spl">Split</span>' : '';
-    return '<div class="fxbrow">'+fxTeamLabel(t.team)+
+    return '<div class="fxbrow">'+
       '<div class="fxouw"><span class="ou">O/U</span><span class="ln num">'+t.line+'</span></div>'+
-      '<div>'+bd+'</div><div class="fxpicks">'+picks+'</div></div>';
+      fxTeamLabel(t.team)+
+      '<div class="fxconsw">'+bd+'</div>'+
+      '<div class="fxpicks"'+gcols+'>'+cells+'</div></div>';
   }).join("");
   const title = div + (teams.length>fxBoardCap ? ' \u00b7 '+teams.length+' teams' : '');
-  return '<div class="fxdboard" data-div="'+div+'"><div class="fxdtitle">'+title+'</div>'+
-    '<div class="fxboard" data-board="'+div+'"><div class="fxbhead"><span>Team</span><span>Line</span><span>Consensus</span><span>Pick</span></div>'+rows+'</div>'+
+  return '<div class="fxdboard" data-div="'+div+'"><div class="fxdtitle">'+title+
+      '<span class="oddshint">tap a host for odds</span></div>'+
+    '<div class="fxboard" data-board="'+div+'"><div class="fxbhead"><span>Line</span><span>Team</span><span>Consensus</span><span>Leans &middot; tap a host for odds</span></div>'+rows+'</div>'+
     '<div class="fxexw"><button class="fxbexpand" data-board="'+div+'" style="display:none">Show all</button></div></div>';
 }
 
