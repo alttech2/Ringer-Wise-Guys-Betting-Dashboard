@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-09-06T20:30+00:00",
+    "generated": "2026-09-06T21:30+00:00",
     "range": "8/7–9/4",
     "count": 57,
     "source": "wiseguys_tracker.xlsx"
@@ -1714,6 +1714,179 @@
               ],
               "consensus": "split"
             }
+          ],
+          "NFC West": [
+            {
+              "team": "Rams",
+              "line": "11.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "under",
+                  "selection": "Under 11.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "under",
+                  "selection": "Under 11.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "under",
+                  "selection": "Under 11.5",
+                  "odds": {
+                    "bet": "+120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Seahawks",
+              "line": "10.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 10.5",
+                  "odds": {
+                    "bet": "-120",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "49ers",
+              "line": "9.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 9.5",
+                  "odds": {
+                    "bet": "-130",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                }
+              ],
+              "consensus": "family"
+            },
+            {
+              "team": "Cardinals",
+              "line": "3.5",
+              "picks": [
+                {
+                  "host": "House",
+                  "side": "over",
+                  "selection": "Over 3.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 3.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Dabbundo",
+                  "side": "over",
+                  "selection": "Over 3.5",
+                  "odds": {
+                    "bet": "-145",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": false
+                },
+                {
+                  "host": "Raheem",
+                  "side": "over",
+                  "selection": "Over 4.5",
+                  "odds": {
+                    "bet": "+135",
+                    "live": null
+                  },
+                  "stake": "Lean",
+                  "alt": true
+                }
+              ],
+              "consensus": "family"
+            }
           ]
         },
         "division_winners": {
@@ -1919,6 +2092,35 @@
               },
               "result": "Pending"
             }
+          ],
+          "NFC West": [
+            {
+              "host": "House",
+              "team": "49ers",
+              "odds": {
+                "bet": "+330",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "team": "49ers",
+              "odds": {
+                "bet": "+330",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Dabbundo",
+              "team": "Seahawks",
+              "odds": {
+                "bet": "",
+                "live": null
+              },
+              "result": "Pending"
+            }
           ]
         },
         "player_props": {
@@ -2080,6 +2282,26 @@
             {
               "host": "Raheem",
               "bet": "Bucky Irving over 825.5 rushing yds",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            }
+          ],
+          "NFC West": [
+            {
+              "host": "House",
+              "bet": "Jaxon Smith-Njigba over 99.5 receptions",
+              "odds": {
+                "bet": "-114",
+                "live": null
+              },
+              "result": "Pending"
+            },
+            {
+              "host": "Raheem",
+              "bet": "Trey McBride over 950.5 rec yds",
               "odds": {
                 "bet": "-114",
                 "live": null
@@ -2265,13 +2487,35 @@
               "live": null
             },
             "result": "Pending"
+          },
+          {
+            "host": "Dabbundo",
+            "bet": "Jeremiyah Love — Offensive ROY",
+            "bet_type": "Award",
+            "division": "NFC West",
+            "odds": {
+              "bet": "+470",
+              "live": null
+            },
+            "result": "Pending"
+          },
+          {
+            "host": "Sal",
+            "bet": "De'Zhaun Stribling — Most Rookie Rec Yds",
+            "bet_type": "Player Prop",
+            "division": "NFC West",
+            "odds": {
+              "bet": "+470",
+              "live": null
+            },
+            "result": "Pending"
           }
         ],
         "summary": {
-          "open_predictions": 101,
-          "staked_plays": 55,
-          "longshots": 16,
-          "max_units": 100.9
+          "open_predictions": 112,
+          "staked_plays": 62,
+          "longshots": 18,
+          "max_units": 109.3
         }
       },
       "College Football": {
