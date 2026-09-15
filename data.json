@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-09-06T21:30+00:00",
-    "range": "8/7–9/4",
-    "count": 57,
+    "generated": "2026-09-15T00:00+00:00",
+    "range": "8/7–9/14",
+    "count": 71,
     "source": "wiseguys_tracker.xlsx"
   },
   "bets": [
@@ -575,6 +575,146 @@
       "odds": "+112",
       "result": "W",
       "net": 1.12
+    },
+    {
+      "date": "9/8",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "MLB",
+      "bet": "Cubs/Brewers Under 7.5",
+      "odds": "-115",
+      "result": "W",
+      "net": 0.87
+    },
+    {
+      "date": "9/8",
+      "host": "Joe House",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "Sandy Alcantara Over 18.5 outs",
+      "odds": "+114",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/8",
+      "host": "Raheem Palmer",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Rays ML",
+      "odds": "-102",
+      "result": "W",
+      "net": 0.98
+    },
+    {
+      "date": "9/8",
+      "host": "Cousin Sal",
+      "type": "Spread",
+      "sport": "MLB",
+      "bet": "Yankees -1.5 (run line)",
+      "odds": "-140",
+      "result": "W",
+      "net": 0.71
+    },
+    {
+      "date": "9/9",
+      "host": "Anthony Dabbundo",
+      "type": "Moneyline",
+      "sport": "MLB",
+      "bet": "Phillies ML",
+      "odds": "-154",
+      "result": "W",
+      "net": 0.65
+    },
+    {
+      "date": "9/9",
+      "host": "Raheem Palmer",
+      "type": "Total",
+      "sport": "NFL",
+      "bet": "Seahawks Team Total Under 24.5",
+      "odds": "-114",
+      "result": "W",
+      "net": 0.88
+    },
+    {
+      "date": "9/9",
+      "host": "Cousin Sal",
+      "type": "Parlay",
+      "sport": "MLB",
+      "bet": "Dodgers ML + Red Sox ML",
+      "odds": "-104",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/10",
+      "host": "Anthony Dabbundo",
+      "type": "Spread",
+      "sport": "Tennis",
+      "bet": "Pegula +2.5 games",
+      "odds": "+100",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/10",
+      "host": "Cousin Sal",
+      "type": "Parlay",
+      "sport": "Multi",
+      "bet": "Rams ML + Sabalenka to win",
+      "odds": "+131",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/10",
+      "host": "Raheem Palmer",
+      "type": "Spread",
+      "sport": "NFL",
+      "bet": "49ers +2.5 (1H)",
+      "odds": "-114",
+      "result": "W",
+      "net": 0.88
+    },
+    {
+      "date": "9/14",
+      "host": "Anthony Dabbundo",
+      "type": "Total",
+      "sport": "NFL",
+      "bet": "Chiefs/Broncos Under 43.5",
+      "odds": "-114",
+      "result": "W",
+      "net": 0.88
+    },
+    {
+      "date": "9/14",
+      "host": "Joe House",
+      "type": "Teaser",
+      "sport": "NFL",
+      "bet": "Broncos +8.5 + Under 49.5",
+      "odds": "-135",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/14",
+      "host": "Tate Frazier",
+      "type": "Prop",
+      "sport": "NFL",
+      "bet": "Chiefs to attempt a FG on opening drive",
+      "odds": "+330",
+      "result": "L",
+      "net": -1.0
+    },
+    {
+      "date": "9/14",
+      "host": "Cousin Sal",
+      "type": "Prop",
+      "sport": "MLB",
+      "bet": "Pete Alonso to hit a HR",
+      "odds": "+320",
+      "result": "L",
+      "net": -1.0
     }
   ],
   "futures": {
